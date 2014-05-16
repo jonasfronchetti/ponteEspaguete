@@ -4,16 +4,16 @@
  */
 
 /*
- * Clientes.java
+ * Equipes.java
  *
  * Created on 13/03/2011, 18:46:50
  */
 
 package Interface;
 
-import Modelo.Clientes;
+import Modelo.Equipes;
 import Modelo.ConexaoBD;
-import Controle.Controla_Clientes;
+import Controle.Controla_Equipes;
 import Ferramentas.CaixaDeDialogo;
 import Ferramentas.Formatacao;
 import Ferramentas.Validacao;
@@ -27,17 +27,17 @@ import javax.swing.ButtonGroup;
  *
  * @author Jonas
  */
-public class Tela_Clientes extends javax.swing.JFrame {
+public class Tela_Equipes extends javax.swing.JFrame {
      Menu objMenu;
      public static Connection con;
      public static Statement stmt;
      public boolean vSelecao = true;
-     //Clientes objCliente = null;
-     Controla_Clientes ctlCliente;
-     Clientes Clientes = new Clientes();
+     //Equipes objEquipe = null;
+     Controla_Equipes ctlEquipe;
+     Equipes Equipes = new Equipes();
           
-    /** Creates new form Clientes */
-    public Tela_Clientes(String pPesquisa) {
+    /** Creates new form Equipes */
+    public Tela_Equipes(String pPesquisa) {
         abreConexao();
         this.setLocation(20, 100);
         initComponents();
@@ -50,7 +50,7 @@ public class Tela_Clientes extends javax.swing.JFrame {
         txtCampoPesquisa.setText(pPesquisa);
         if (!"".equals(pPesquisa)){
         System.out.print("pPesquisa = " + pPesquisa);
-        cbPesquisarPor.setSelectedItem("Nome_Cliente");
+        cbPesquisarPor.setSelectedItem("Nome_Equipe");
         btPesquisarActionPerformed(null);
         } else {
          btCancela.setEnabled(false);
@@ -59,8 +59,8 @@ public class Tela_Clientes extends javax.swing.JFrame {
 
     }
 
-//    public Clientes(Clientes objCliente) {
-//        this.objCliente = objCliente;
+//    public Equipes(Equipes objEquipe) {
+//        this.objEquipe = objEquipe;
 //    }
 
 
@@ -91,13 +91,13 @@ public class Tela_Clientes extends javax.swing.JFrame {
         btFechar = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
         btNovo = new javax.swing.JButton();
-        tbpClientes = new javax.swing.JTabbedPane();
+        tbpEquipes = new javax.swing.JTabbedPane();
         pnlConsulta = new javax.swing.JLayeredPane();
         jPanel2 = new javax.swing.JPanel();
         rbComecandoPor = new javax.swing.JRadioButton();
         rbContendo = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        dtgClientes = new javax.swing.JTable();
+        dtgEquipes = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         btPesquisar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
@@ -105,32 +105,31 @@ public class Tela_Clientes extends javax.swing.JFrame {
         txtCampoPesquisa = new javax.swing.JTextField();
         pnlManutencao = new javax.swing.JLayeredPane();
         jpManutencao = new javax.swing.JPanel();
-        txtId_Cliente = new javax.swing.JTextField();
+        txtId_Equipe = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtNome_Cliente = new javax.swing.JTextField();
-        txtTelefone_Cliente = new javax.swing.JFormattedTextField();
-        txtTelefone_Cliente = Formatacao.getTelefone();
+        txtNome_Equipe = new javax.swing.JTextField();
+        txtTelefone_Equipe = new javax.swing.JFormattedTextField();
+        txtTelefone_Equipe = Formatacao.getTelefone();
         jLabel5 = new javax.swing.JLabel();
         txtData_Criacao = new javax.swing.JFormattedTextField();
-        txtTelefone_Cliente = Formatacao.getTelefone();
+        txtTelefone_Equipe = Formatacao.getTelefone();
         jLabel6 = new javax.swing.JLabel();
         txtUsuario_Criacao = new javax.swing.JFormattedTextField();
-        txtTelefone_Cliente = Formatacao.getTelefone();
+        txtTelefone_Equipe = Formatacao.getTelefone();
         jLabel7 = new javax.swing.JLabel();
         txtSituacao = new javax.swing.JFormattedTextField();
-        txtTelefone_Cliente = Formatacao.getTelefone();
+        txtTelefone_Equipe = Formatacao.getTelefone();
         jLabel9 = new javax.swing.JLabel();
-        txtEndereco_Cliente = new javax.swing.JTextField();
+        txtEndereco_Equipe = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        txtBairro_Cliente = new javax.swing.JTextField();
+        txtBairro_Equipe = new javax.swing.JTextField();
         btConfirmar = new javax.swing.JButton();
         btCancela = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Clientes");
-        setPreferredSize(new java.awt.Dimension(653, 458));
+        setTitle("Equipes");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -139,7 +138,7 @@ public class Tela_Clientes extends javax.swing.JFrame {
                 formWindowClosing(evt);
             }
         });
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Confirma.png"))); // NOI18N
         btAdicionar.setText("Adicionar");
@@ -226,8 +225,7 @@ public class Tela_Clientes extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(10, 11, 633, 47);
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisa"));
 
@@ -271,16 +269,16 @@ public class Tela_Clientes extends javax.swing.JFrame {
         jPanel2.setBounds(430, 10, 190, 90);
         jPanel2.getAccessibleContext().setAccessibleName("Seleção");
 
-        dtgClientes.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        dtgClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+        dtgEquipes.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        dtgEquipes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                dtgClientesMouseClicked(evt);
+                dtgEquipesMouseClicked(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                dtgClientesMousePressed(evt);
+                dtgEquipesMousePressed(evt);
             }
         });
-        jScrollPane1.setViewportView(dtgClientes);
+        jScrollPane1.setViewportView(dtgEquipes);
 
         pnlConsulta.add(jScrollPane1);
         jScrollPane1.setBounds(10, 100, 610, 240);
@@ -327,22 +325,22 @@ public class Tela_Clientes extends javax.swing.JFrame {
         pnlConsulta.add(jPanel3);
         jPanel3.setBounds(10, 10, 420, 90);
 
-        tbpClientes.addTab("Consulta", pnlConsulta);
+        tbpEquipes.addTab("Consulta", pnlConsulta);
 
         pnlManutencao.setEnabled(false);
 
         jpManutencao.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        txtId_Cliente.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        txtId_Cliente.setEnabled(false);
+        txtId_Equipe.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtId_Equipe.setEnabled(false);
 
-        jLabel4.setText("Nome Cliente");
+        jLabel4.setText("Nome da Equipe");
 
         jLabel3.setText("Telefone");
 
         jLabel2.setText("Id Cliente");
 
-        txtNome_Cliente.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtNome_Equipe.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
         jLabel5.setText("Data Criação");
 
@@ -358,11 +356,11 @@ public class Tela_Clientes extends javax.swing.JFrame {
 
         jLabel9.setText("Endereço");
 
-        txtEndereco_Cliente.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtEndereco_Equipe.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
         jLabel10.setText("Bairro");
 
-        txtBairro_Cliente.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtBairro_Equipe.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
         javax.swing.GroupLayout jpManutencaoLayout = new javax.swing.GroupLayout(jpManutencao);
         jpManutencao.setLayout(jpManutencaoLayout);
@@ -376,11 +374,11 @@ public class Tela_Clientes extends javax.swing.JFrame {
                             .addGroup(jpManutencaoLayout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtId_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtId_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jpManutencaoLayout.createSequentialGroup()
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNome_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtNome_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jpManutencaoLayout.createSequentialGroup()
                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -389,16 +387,16 @@ public class Tela_Clientes extends javax.swing.JFrame {
                                 .addGroup(jpManutencaoLayout.createSequentialGroup()
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtTelefone_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtTelefone_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jpManutencaoLayout.createSequentialGroup()
                                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtBairro_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtBairro_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jpManutencaoLayout.createSequentialGroup()
                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtEndereco_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txtEndereco_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(204, 204, 204))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpManutencaoLayout.createSequentialGroup()
                         .addContainerGap(402, Short.MAX_VALUE)
@@ -418,23 +416,23 @@ public class Tela_Clientes extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtId_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtId_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNome_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNome_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEndereco_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEndereco_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBairro_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBairro_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(59, 59, 59)
                 .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTelefone_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTelefone_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpManutencaoLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
@@ -478,10 +476,9 @@ public class Tela_Clientes extends javax.swing.JFrame {
         pnlManutencao.add(btCancela);
         btCancela.setBounds(530, 330, 90, 20);
 
-        tbpClientes.addTab("Manutenção", pnlManutencao);
+        tbpEquipes.addTab("Manutenção", pnlManutencao);
 
-        getContentPane().add(tbpClientes);
-        tbpClientes.setBounds(10, 69, 633, 378);
+        getContentPane().add(tbpEquipes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 69, 633, 378));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -490,9 +487,9 @@ public class Tela_Clientes extends javax.swing.JFrame {
         // TODO add your handling code here:
         int wControle = 0;
 
-        wControle = Tela_Login.objMenu.preencheJanelas("Clientes", "I");
+        wControle = Tela_Login.objMenu.preencheJanelas("Equipes", "I");
             if (wControle != 0){
-            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao ativar menu 'Clientes'");
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao ativar menu 'Equipes'");
             }
         dispose();
     }//GEN-LAST:event_formWindowClosing
@@ -501,9 +498,9 @@ public class Tela_Clientes extends javax.swing.JFrame {
         // TODO add your handling code here:
 //        int wControle = 0;
 //
-//        wControle = Tela_Login.objMenu.preencheJanelas("Clientes", "I");
+//        wControle = Tela_Login.objMenu.preencheJanelas("Equipes", "I");
 //            if (wControle != 0){
-//            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao ativar menu 'Clientes'");
+//            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao ativar menu 'Equipes'");
 //            }
         dispose();
     }//GEN-LAST:event_formWindowClosed
@@ -512,9 +509,9 @@ public class Tela_Clientes extends javax.swing.JFrame {
         // TODO add your handling code here:
         int wControle = 0;
 
-        wControle = Tela_Login.objMenu.preencheJanelas("Clientes", "I");
+        wControle = Tela_Login.objMenu.preencheJanelas("Equipes", "I");
             if (wControle != 0){
-            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao ativar menu 'Clientes'");
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao ativar menu 'Equipes'");
             }
         dispose();
     }//GEN-LAST:event_btFecharActionPerformed
@@ -528,18 +525,18 @@ public class Tela_Clientes extends javax.swing.JFrame {
         if (xMensagemValidacao.equals("")){
         System.out.println("Validou Dados");
 
-        Clientes.definirId_Cliente(Integer.parseInt(txtId_Cliente.getText()));
-        //Clientes.definirNome_Cliente(txtNome_Cliente.getText());
-        //Clientes.definirTelefone(txtTelefone_Cliente.getText().replace("(","").replace(")","").replace("-",""));
+        Equipes.definirId_Equipe(Integer.parseInt(txtId_Equipe.getText()));
+        //Equipes.definirNome_Equipe(txtNome_Equipe.getText());
+        //Equipes.definirTelefone(txtTelefone_Equipe.getText().replace("(","").replace(")","").replace("-",""));
         GuardaDados(false);
         System.out.println("Guardou Dados");
 
-        wControle = ctlCliente.alterarCliente();
+        wControle = ctlEquipe.alterarEquipe();
         if (wControle != 0){
-           CaixaDeDialogo.obterinstancia().exibirMensagem("Cliente alterado com sucesso!");
+           CaixaDeDialogo.obterinstancia().exibirMensagem("Equipe alterada com sucesso!");
            LimpaTela(true,false);
         } else {
-           CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao alterar cliente!");
+           CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao alterar equipe!");
            }
         } else {
         CaixaDeDialogo.obterinstancia().exibirMensagem("Erros de Validação: \n" + xMensagemValidacao);
@@ -550,48 +547,48 @@ public class Tela_Clientes extends javax.swing.JFrame {
         LimpaTela(true,false);
     }//GEN-LAST:event_btLimparActionPerformed
 
-    private void dtgClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dtgClientesMouseClicked
+    private void dtgEquipesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dtgEquipesMouseClicked
         // TODO add your handling code here:
         
          
-    }//GEN-LAST:event_dtgClientesMouseClicked
+    }//GEN-LAST:event_dtgEquipesMouseClicked
 
-    private void dtgClientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dtgClientesMousePressed
+    private void dtgEquipesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dtgEquipesMousePressed
         // TODO add your handling code here:
         int wControle;
-        int linhaSelecionada = dtgClientes.getSelectedRow();//pega a linha selecionada
-        String coluna1 = dtgClientes.getModel().getValueAt(linhaSelecionada, 0).toString(); // Primeira coluna da linha
+        int linhaSelecionada = dtgEquipes.getSelectedRow();//pega a linha selecionada
+        String coluna1 = dtgEquipes.getModel().getValueAt(linhaSelecionada, 0).toString(); // Primeira coluna da linha
         
-        if (dtgClientes.isColumnSelected(3)){
-            tbpClientes.setSelectedIndex(1);
-            txtNome_Cliente.requestFocus();
+        if (dtgEquipes.isColumnSelected(3)){
+            tbpEquipes.setSelectedIndex(1);
+            txtNome_Equipe.requestFocus();
             btAlterar.setVisible(true);
             btExcluir.setVisible(true);
             btNovo.setVisible(true);
             btAdicionar.setVisible(false);
 
-            ctlCliente = new Controla_Clientes(Clientes, dtgClientes);
+            ctlEquipe = new Controla_Equipes(Equipes, dtgEquipes);
 
-            Clientes.definirId_Cliente(Integer.parseInt(coluna1));
-            wControle = ctlCliente.buscarCliente();
+            Equipes.definirId_Equipe(Integer.parseInt(coluna1));
+            wControle = ctlEquipe.buscarEquipe();
                 if (wControle < 0){
-                CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao buscar Cliente no BD!");
+                CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao buscar Equipe no BD!");
                 } else {
                 if (wControle == 0)
                 TelaAlteracao();
                 }
      }
-    }//GEN-LAST:event_dtgClientesMousePressed
+    }//GEN-LAST:event_dtgEquipesMousePressed
 
     private void btConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmarActionPerformed
         // TODO add your handling code here:
-        //Tela_Ordens.RecebeCliente(txtId_Cliente.getText(), txtNome_Cliente.getText(), txtTelefone_Cliente.getText());
+        //Tela_Ordens.RecebeEquipe(txtId_Equipe.getText(), txtNome_Equipe.getText(), txtTelefone_Equipe.getText());
         dispose();
     }//GEN-LAST:event_btConfirmarActionPerformed
 
     private void btCancelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelaActionPerformed
         // TODO add your handling code here:
-        //Tela_Ordens.RecebeCliente("","","");
+        //Tela_Ordens.RecebeEquipe("","","");
         dispose();
     }//GEN-LAST:event_btCancelaActionPerformed
 
@@ -611,12 +608,12 @@ public class Tela_Clientes extends javax.swing.JFrame {
         GuardaDados(true);
         System.out.println("Guardou Dados");
 
-        wControle = ctlCliente.gravarCliente();
+        wControle = ctlEquipe.gravarEquipe();
         if (wControle != 0){
-           CaixaDeDialogo.obterinstancia().exibirMensagem("Cliente gravado com sucesso!");
+           CaixaDeDialogo.obterinstancia().exibirMensagem("Equipe gravada com sucesso!");
             LimpaTela(true,false);
         } else {
-           CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao gravar cliente!");
+           CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao gravar equipe!");
            }
         } else {
         CaixaDeDialogo.obterinstancia().exibirMensagem("Erros de Validação: \n" + xMensagemValidacao);
@@ -630,21 +627,21 @@ public class Tela_Clientes extends javax.swing.JFrame {
         char wChar = 'p';
         boolean wPergunta = false;
 
-        wPergunta = CaixaDeDialogo.obterinstancia().pedirConfirmacao("Tem certeza de que deseja excluir o Cliente?","",wChar);
+        wPergunta = CaixaDeDialogo.obterinstancia().pedirConfirmacao("Tem certeza de que deseja excluir a Equipe?","",wChar);
 
         if (wPergunta == true){
-        Clientes.definirId_Cliente(Integer.parseInt(txtId_Cliente.getText()));
-        Clientes.definirUsuario_Exclusao(Tela_Login.objMenu.mIdUsuarioLogin);
+        Equipes.definirId_Equipe(Integer.parseInt(txtId_Equipe.getText()));
+        Equipes.definirUsuario_Exclusao(Tela_Login.objMenu.mIdUsuarioLogin);
         Date data = new Date();
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy hh:mm");
         formatador.format(data);
-        Clientes.definirData_Exclusao(formatador.format(data));
-        wControle = ctlCliente.excluirCliente();
+        Equipes.definirData_Exclusao(formatador.format(data));
+        wControle = ctlEquipe.excluirEquipe();
         if (wControle != 0){
-           CaixaDeDialogo.obterinstancia().exibirMensagem("Cliente excluído com sucesso!");
+           CaixaDeDialogo.obterinstancia().exibirMensagem("Equipe excluída com sucesso!");
            LimpaTela(true,false);
         } else {
-           CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao excluir cliente!");
+           CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao excluir equipe!");
           }
         }
     }//GEN-LAST:event_btExcluirActionPerformed
@@ -658,7 +655,7 @@ public class Tela_Clientes extends javax.swing.JFrame {
            pTipoSelecao = "CT";
         }
 
-        ctlCliente.PreencheClientes(cbPesquisarPor.getSelectedItem().toString(),txtCampoPesquisa.getText(), pTipoSelecao);
+        ctlEquipe.PreencheEquipes(cbPesquisarPor.getSelectedItem().toString(),txtCampoPesquisa.getText(), pTipoSelecao);
     }//GEN-LAST:event_btPesquisarActionPerformed
 
     private void rbComecandoPorStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rbComecandoPorStateChanged
@@ -672,24 +669,24 @@ public class Tela_Clientes extends javax.swing.JFrame {
         //rbContendo.setSelected(true);
     }//GEN-LAST:event_rbContendoStateChanged
 
-    private void AtualizaClientes(){
-        //objClientes.setNome(txNomeMotorista.getText());
-        //objClientes.definirNome_Cliente('teste');
-        //objClientes.definirTelefone('teste');
-        //objClientes.setCategoriaCarteira('teste');
-        ctlCliente = new Controla_Clientes(Clientes, dtgClientes);
+    private void AtualizaEquipes(){
+        //objEquipes.setNome(txNomeMotorista.getText());
+        //objEquipes.definirNome_Equipe('teste');
+        //objEquipes.definirTelefone('teste');
+        //objEquipes.setCategoriaCarteira('teste');
+        ctlEquipe = new Controla_Equipes(Equipes, dtgEquipes);
         
-        //wControle = objClientes_Implem.buscaClientes();
-        ctlCliente.PreencheClientes("","","");
+        //wControle = objEquipes_Implem.buscaEquipes();
+        ctlEquipe.PreencheEquipes("","","");
         PreencheComboPesquisa();
     }
 
         private void PreencheComboPesquisa(){
 
         cbPesquisarPor.removeAllItems();
-        if ((dtgClientes.getColumnCount() - 1) > 0){
-            for (int i= 0; i < dtgClientes.getColumnCount() - 1; i++){
-              cbPesquisarPor.addItem(dtgClientes.getColumnName(i));
+        if ((dtgEquipes.getColumnCount() - 1) > 0){
+            for (int i= 0; i < dtgEquipes.getColumnCount() - 1; i++){
+              cbPesquisarPor.addItem(dtgEquipes.getColumnName(i));
             }
         }
         
@@ -698,14 +695,14 @@ public class Tela_Clientes extends javax.swing.JFrame {
         private String ValidaDados() {
         String xMensagem = "";
         
-        if(txtNome_Cliente.getText().equals("")){
-        xMensagem +="Nome Cliente deve ser preenchido! \n";
+        if(txtNome_Equipe.getText().equals("")){
+        xMensagem +="Nome Equipe deve ser preenchido! \n";
         }
 
-        if (txtTelefone_Cliente.getText().replace("(", "").replace(")","").replace("-","").replace(" ","").length() > 0){
-        Validacao.validarTelefone(txtTelefone_Cliente);
-            if (txtTelefone_Cliente.getText().replace("(", "").replace(")","").replace("-","").replace(" ","").length() == 0){
-            xMensagem +="Telefone Cliente deve ser preenchido corretamente! \n";
+        if (txtTelefone_Equipe.getText().replace("(", "").replace(")","").replace("-","").replace(" ","").length() > 0){
+        Validacao.validarTelefone(txtTelefone_Equipe);
+            if (txtTelefone_Equipe.getText().replace("(", "").replace(")","").replace("-","").replace(" ","").length() == 0){
+            xMensagem +="Telefone Equipe deve ser preenchido corretamente! \n";
             }
         }
         return xMensagem;
@@ -715,31 +712,31 @@ public class Tela_Clientes extends javax.swing.JFrame {
 
         if (RegistroNovo == true){
         System.out.println("Guardou Dados Registro Novo = true");
-        Clientes.definirId_Cliente(0);
-        Clientes.definirNome_Cliente(txtNome_Cliente.getText());
-        Clientes.definirTelefone(txtTelefone_Cliente.getText().replace("(","").replace(")","").replace("-",""));
-        Clientes.definirUsuario_Criacao(Tela_Login.objMenu.mIdUsuarioLogin);
-        Clientes.definirData_Criacao(txtData_Criacao.getText());
+        Equipes.definirId_Equipe(0);
+        Equipes.definirNome_Equipe(txtNome_Equipe.getText());
+        Equipes.definirTelefone(txtTelefone_Equipe.getText().replace("(","").replace(")","").replace("-",""));
+        Equipes.definirUsuario_Criacao(Tela_Login.objMenu.mIdUsuarioLogin);
+        Equipes.definirData_Criacao(txtData_Criacao.getText());
         System.out.println("definirData_Criacao = " + txtData_Criacao.getText());
-        //ctlCliente = new Controla_Clientes(Clientes, dtgClientes);
+        //ctlEquipe = new Controla_Equipes(Equipes, dtgEquipes);
         } else {
         System.out.println("Guardou Dados Registro Novo = false");
-        Clientes.definirNome_Cliente(txtNome_Cliente.getText());
-        Clientes.definirTelefone(txtTelefone_Cliente.getText().replace("(","").replace(")","").replace("-",""));
+        Equipes.definirNome_Equipe(txtNome_Equipe.getText());
+        Equipes.definirTelefone(txtTelefone_Equipe.getText().replace("(","").replace(")","").replace("-",""));
         }
     }
 
     private void TelaAlteracao() {
 
         pnlManutencao.setEnabled(true);
-        txtId_Cliente.setText(Integer.toString(Clientes.obterId_Cliente()));
-        txtNome_Cliente.setText(Clientes.obterNome_Cliente());
-        txtTelefone_Cliente.setText(Clientes.obterTelefone());
+        txtId_Equipe.setText(Integer.toString(Equipes.obterId_Equipe()));
+        txtNome_Equipe.setText(Equipes.obterNome_Equipe());
+        txtTelefone_Equipe.setText(Equipes.obterTelefone());
 
-        String data = Formatacao.ajustaDataDMA(Clientes.obterData_Criacao());
+        String data = Formatacao.ajustaDataDMA(Equipes.obterData_Criacao());
         txtData_Criacao.setText(data);
         
-        if (Clientes.obterData_Exclusao() == null){
+        if (Equipes.obterData_Exclusao() == null){
             txtSituacao.setText("ATIVO");
         } else {
             txtSituacao.setText("EXCLUÍDO");
@@ -749,9 +746,9 @@ public class Tela_Clientes extends javax.swing.JFrame {
     private void LimpaTela(boolean LimpaTudo, boolean NovoRegistro) {
 
         txtCampoPesquisa.setText("");
-        txtId_Cliente.setText("");
-        txtNome_Cliente.setText("");
-        txtTelefone_Cliente.setText("");
+        txtId_Equipe.setText("");
+        txtNome_Equipe.setText("");
+        txtTelefone_Equipe.setText("");
         Date data = new Date();
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy hh:mm");
         formatador.format(data);
@@ -762,9 +759,9 @@ public class Tela_Clientes extends javax.swing.JFrame {
         btCancela.setEnabled(vSelecao);
 
         if (LimpaTudo == true){
-            AtualizaClientes();
+            AtualizaEquipes();
             jpManutencao.setEnabled(false);
-            tbpClientes.setSelectedIndex(0);
+            tbpEquipes.setSelectedIndex(0);
             txtCampoPesquisa.requestFocus();
             btNovo.setVisible(true);
             btAdicionar.setVisible(false);
@@ -772,8 +769,8 @@ public class Tela_Clientes extends javax.swing.JFrame {
             btExcluir.setVisible(false);
         }
         if (NovoRegistro == true){
-            tbpClientes.setSelectedIndex(1);
-            txtNome_Cliente.requestFocus();
+            tbpEquipes.setSelectedIndex(1);
+            txtNome_Equipe.requestFocus();
             btNovo.setVisible(false);
             btAdicionar.setVisible(true);
             btAlterar.setVisible(false);
@@ -788,7 +785,7 @@ public class Tela_Clientes extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Tela_Clientes("").setVisible(true);
+                new Tela_Equipes("").setVisible(true);
             }
         });
     }
@@ -805,7 +802,7 @@ public class Tela_Clientes extends javax.swing.JFrame {
     private javax.swing.JButton btPesquisar;
     private javax.swing.ButtonGroup buttonGroup1;
     private static javax.swing.JComboBox cbPesquisarPor;
-    private javax.swing.JTable dtgClientes;
+    private javax.swing.JTable dtgEquipes;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -824,15 +821,15 @@ public class Tela_Clientes extends javax.swing.JFrame {
     private javax.swing.JLayeredPane pnlManutencao;
     private javax.swing.JRadioButton rbComecandoPor;
     private javax.swing.JRadioButton rbContendo;
-    private javax.swing.JTabbedPane tbpClientes;
-    private javax.swing.JTextField txtBairro_Cliente;
+    private javax.swing.JTabbedPane tbpEquipes;
+    private javax.swing.JTextField txtBairro_Equipe;
     private javax.swing.JTextField txtCampoPesquisa;
     private javax.swing.JFormattedTextField txtData_Criacao;
-    private javax.swing.JTextField txtEndereco_Cliente;
-    private javax.swing.JTextField txtId_Cliente;
-    private javax.swing.JTextField txtNome_Cliente;
+    private javax.swing.JTextField txtEndereco_Equipe;
+    private javax.swing.JTextField txtId_Equipe;
+    private javax.swing.JTextField txtNome_Equipe;
     private javax.swing.JFormattedTextField txtSituacao;
-    private javax.swing.JFormattedTextField txtTelefone_Cliente;
+    private javax.swing.JFormattedTextField txtTelefone_Equipe;
     private javax.swing.JFormattedTextField txtUsuario_Criacao;
     // End of variables declaration//GEN-END:variables
 

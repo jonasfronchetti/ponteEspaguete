@@ -67,6 +67,7 @@ public class Tela_Medicao extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela de Login");
+        setPreferredSize(new java.awt.Dimension(653, 458));
         getContentPane().setLayout(null);
 
         pnMedicao.setBorder(javax.swing.BorderFactory.createTitledBorder("Medição"));
@@ -93,7 +94,7 @@ public class Tela_Medicao extends javax.swing.JFrame {
             }
         });
         pnMedicao.add(btCapturar);
-        btCapturar.setBounds(179, 16, 75, 49);
+        btCapturar.setBounds(179, 16, 77, 49);
 
         txtVelocidade.setName("txtPorta"); // NOI18N
         pnMedicao.add(txtVelocidade);
@@ -117,7 +118,7 @@ public class Tela_Medicao extends javax.swing.JFrame {
         lblObs1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblObs1.setText("MENSAGEM DE SUCESSO!!!");
         pnMedicao.add(lblObs1);
-        lblObs1.setBounds(73, 175, 346, 14);
+        lblObs1.setBounds(20, 170, 346, 14);
 
         txtPeso.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtPeso.setText("60");
@@ -132,10 +133,10 @@ public class Tela_Medicao extends javax.swing.JFrame {
             }
         });
         pnMedicao.add(btStart);
-        btStart.setBounds(16, 108, 107, 49);
+        btStart.setBounds(16, 108, 109, 49);
 
         getContentPane().add(pnMedicao);
-        pnMedicao.setBounds(10, 109, 450, 0);
+        pnMedicao.setBounds(10, 120, 450, 290);
         pnMedicao.getAccessibleContext().setAccessibleName("medicao");
 
         btAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Confirma.png"))); // NOI18N
@@ -234,7 +235,7 @@ public class Tela_Medicao extends javax.swing.JFrame {
         jScrollPane1.setBounds(6, 16, 209, 316);
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(466, 58, 0, 0);
+        jPanel2.setBounds(466, 58, 230, 350);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados"));
         jPanel3.setLayout(null);
@@ -275,9 +276,9 @@ public class Tela_Medicao extends javax.swing.JFrame {
         txtCodigoEquipe.setBounds(213, 16, 34, 20);
 
         getContentPane().add(jPanel3);
-        jPanel3.setBounds(10, 55, 450, 0);
+        jPanel3.setBounds(10, 55, 450, 50);
 
-        setSize(new java.awt.Dimension(713, 440));
+        setSize(new java.awt.Dimension(713, 452));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

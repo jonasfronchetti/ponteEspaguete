@@ -40,22 +40,22 @@ public class CriaTabelaBanco {
             System.err.println(e.getClass().getName() + ": ERRO " + e.getMessage());
             System.exit(0);
         }
-        System.out.println("Tabela criada com sucesso");
+        System.out.println("Tabela c_usuarios criada com sucesso");
     }
 
-    public void criaTabelaClientes() {
+    public void criaTabelaEquipes() {
         try {
-            String sql = "CREATE TABLE c_clientes"
+            String sql = "CREATE TABLE c_equipes"
                     + "("
                     + "  data_criacao timestamp without time zone,"
                     + "  usuario_criacao integer,"
                     + "  data_exclusao timestamp without time zone,"
                     + "  usuario_exclusao integer,"
-                    + "  id_cliente integer NOT NULL,"
-                    + "  nome_cliente character varying(50),"
+                    + "  id_equipe integer NOT NULL,"
+                    + "  nome_equipe character varying(50),"
                     + "  telefone character varying(20),"
-                    + "  CONSTRAINT pk_id_cliente PRIMARY KEY (id_cliente),"
-                    + "  CONSTRAINT c_clientes_usuario_criacao_fkey FOREIGN KEY (usuario_criacao)"
+                    + "  CONSTRAINT pk_id_equipe PRIMARY KEY (id_equipe),"
+                    + "  CONSTRAINT c_equipe_usuario_criacao_fkey FOREIGN KEY (usuario_criacao)"
                     + "      REFERENCES c_usuarios (id_usuario) MATCH SIMPLE"
                     + "      ON UPDATE NO ACTION ON DELETE NO ACTION,"
                     + "  CONSTRAINT c_clientes_usuario_exclusao_fkey FOREIGN KEY (usuario_exclusao)"
@@ -69,7 +69,65 @@ public class CriaTabelaBanco {
             System.err.println(e.getClass().getName() + ": ERRO " + e.getMessage());
             System.exit(0);
         }
-        System.out.println("Tabela criada com sucesso");
+        System.out.println("Tabela c_equipes criada com sucesso");
+    }
+    public void criaTabelaAvaliacoes() {
+        try {
+            String sql = "CREATE TABLE c_avaliacoes"
+                    + "("
+                    + "  data_criacao timestamp without time zone,"
+                    + "  usuario_criacao integer,"
+                    + "  data_exclusao timestamp without time zone,"
+                    + "  usuario_exclusao integer,"
+                    + "  id_avaliacao integer NOT NULL,"
+                    + "  data_avaliacao timestamp without time zone,"
+                    + "  CONSTRAINT pk_id_avaliacao PRIMARY KEY (id_avaliacao),"
+                    + "  CONSTRAINT c_equipe_usuario_criacao_fkey FOREIGN KEY (usuario_criacao)"
+                    + "      REFERENCES c_usuarios (id_usuario) MATCH SIMPLE"
+                    + "      ON UPDATE NO ACTION ON DELETE NO ACTION,"
+                    + "  CONSTRAINT c_clientes_usuario_exclusao_fkey FOREIGN KEY (usuario_exclusao)"
+                    + "      REFERENCES c_usuarios (id_usuario) MATCH SIMPLE"
+                    + "      ON UPDATE NO ACTION ON DELETE NO ACTION"
+                    + ");";
+
+            Tela_Login.stmt.executeUpdate(sql);
+
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": ERRO " + e.getMessage());
+            System.exit(0);
+        }
+        System.out.println("Tabela c_avaliacoes criada com sucesso");
+    }
+    public void criaTabelaAvaliacoesEquipe() {
+        try {
+            String sql = "CREATE TABLE c_avaliacoes_equipe"
+                    + "("
+                    + "  data_criacao timestamp without time zone,"
+                    + "  usuario_criacao integer,"
+                    + "  data_exclusao timestamp without time zone,"
+                    + "  usuario_exclusao integer,"
+                    + "  id_avaliacao integer NOT NULL,"
+                    + "  id_equipe integer NOT NULL,"
+                    + "  pontuacao double,"
+                    + "  peso_ponte double,"
+                    + "  problema character varying(200),"
+                    + "  aprovado bit,"
+                    + "  CONSTRAINT pk_id_avaliacao_equipe PRIMARY KEY (id_equipe, id_avaliacao),"
+                    + "  CONSTRAINT c_equipe_usuario_criacao_fkey FOREIGN KEY (usuario_criacao)"
+                    + "      REFERENCES c_usuarios (id_usuario) MATCH SIMPLE"
+                    + "      ON UPDATE NO ACTION ON DELETE NO ACTION,"
+                    + "  CONSTRAINT c_clientes_usuario_exclusao_fkey FOREIGN KEY (usuario_exclusao)"
+                    + "      REFERENCES c_usuarios (id_usuario) MATCH SIMPLE"
+                    + "      ON UPDATE NO ACTION ON DELETE NO ACTION"
+                    + ");";
+
+            Tela_Login.stmt.executeUpdate(sql);
+
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": ERRO " + e.getMessage());
+            System.exit(0);
+        }
+        System.out.println("Tabela c_avaliacoes_equipe criada com sucesso");
     }
     public void criaUsuarioPadrao() {
         try {

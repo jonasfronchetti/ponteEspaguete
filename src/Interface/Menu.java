@@ -12,6 +12,8 @@ package Interface;
 
 import Relatorios.Relatorio_OS;
 import java.awt.Component;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
@@ -22,11 +24,14 @@ public class Menu extends javax.swing.JFrame {
 
     public int mIdUsuarioLogin;
     public String mLoginUsuario;
-    Tela_Clientes objClientes;
-    Tela_Principal objPrincipal;
+    Tela_Equipes objEquipes;
+    Tela_Avaliacoes objAvaliacoes;
     Relatorio_OS objRelatorio_OS;
     Component objUsuarios;
     String mJanela = "";
+    
+    //JFrame.setBackgroundImage(new Image("./images/seupng.png"));
+    
     /** Creates new form Form */
     public Menu() {
         initComponents();
@@ -39,9 +44,9 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         mnCadastros = new javax.swing.JMenu();
-        mnClientes = new javax.swing.JMenuItem();
+        mnAvaliacoes = new javax.swing.JMenuItem();
+        mnEquipes = new javax.swing.JMenuItem();
         mnUsuarios = new javax.swing.JMenuItem();
-        mnTeste = new javax.swing.JMenuItem();
         mnRelatorios = new javax.swing.JMenu();
         mnRelatorio_OS = new javax.swing.JMenuItem();
         mnJanelas = new javax.swing.JMenu();
@@ -53,16 +58,25 @@ public class Menu extends javax.swing.JFrame {
 
         mnCadastros.setText("Cadastros");
 
-        mnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Clientes.png"))); // NOI18N
-        mnClientes.setText("Clientes");
-        mnClientes.addActionListener(new java.awt.event.ActionListener() {
+        mnAvaliacoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/prova.png"))); // NOI18N
+        mnAvaliacoes.setText("Avaliações");
+        mnAvaliacoes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnClientesActionPerformed(evt);
+                mnAvaliacoesActionPerformed(evt);
             }
         });
-        mnCadastros.add(mnClientes);
+        mnCadastros.add(mnAvaliacoes);
 
-        mnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Funcionario.PNG"))); // NOI18N
+        mnEquipes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Funcionario.PNG"))); // NOI18N
+        mnEquipes.setText("Equipes");
+        mnEquipes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnEquipesActionPerformed(evt);
+            }
+        });
+        mnCadastros.add(mnEquipes);
+
+        mnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Especialidades.png"))); // NOI18N
         mnUsuarios.setText("Usuários");
         mnUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,14 +84,6 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         mnCadastros.add(mnUsuarios);
-
-        mnTeste.setText("CAPTURA");
-        mnTeste.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnTesteActionPerformed(evt);
-            }
-        });
-        mnCadastros.add(mnTeste);
 
         jMenuBar1.add(mnCadastros);
 
@@ -132,12 +138,12 @@ public class Menu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnClientesActionPerformed
+    private void mnEquipesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnEquipesActionPerformed
         // TODO add your handling code here:
-        mnClientes.setEnabled(false);
-        objClientes = new Tela_Clientes("");
-        objClientes.setVisible(true);
-    }//GEN-LAST:event_mnClientesActionPerformed
+        mnEquipes.setEnabled(false);
+        objEquipes = new Tela_Equipes("");
+        objEquipes.setVisible(true);
+    }//GEN-LAST:event_mnEquipesActionPerformed
 
     private void mnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnUsuariosActionPerformed
         // TODO add your handling code here:
@@ -162,11 +168,11 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mnSairActionPerformed
 
-    private void mnTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnTesteActionPerformed
-        mnTeste.setEnabled(false);
-        objPrincipal = new Tela_Principal(mJanela);
-        objPrincipal.setVisible(true);
-    }//GEN-LAST:event_mnTesteActionPerformed
+    private void mnAvaliacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAvaliacoesActionPerformed
+        mnAvaliacoes.setEnabled(false);
+        objAvaliacoes = new Tela_Avaliacoes(mJanela);
+        objAvaliacoes.setVisible(true);
+    }//GEN-LAST:event_mnAvaliacoesActionPerformed
 
     /**
     * @param args the command line arguments
@@ -186,9 +192,9 @@ public class Menu extends javax.swing.JFrame {
             System.out.println("Janela: " + pJanela);
 
             if (pTipo.equals("I"))
-               if (pJanela.equals("Clientes")){
-                   mnClientes.setEnabled(true);
-                   System.out.println("Botou Visivel Clientes");
+               if (pJanela.equals("Equipes")){
+                   mnEquipes.setEnabled(true);
+                   System.out.println("Botou Visivel Equipes");
                }
                if (pJanela.equals("Usuarios")){
                    mnUsuarios.setEnabled(true);
@@ -198,9 +204,9 @@ public class Menu extends javax.swing.JFrame {
                    mnRelatorio_OS.setEnabled(true);
                    System.out.println("Botou Visivel Relatorio_OS");
                }
-               if (pJanela.equals("TesteCOM")){
-                   mnClientes.setEnabled(true);
-                   System.out.println("Botou Visivel TesteCOM");
+               if (pJanela.equals("Avaliacoes")){
+                   mnAvaliacoes.setEnabled(true);
+                   System.out.println("Botou Visivel Avaliações");
                }
                else{
                 if  (pTipo.equals("E"))
@@ -221,14 +227,14 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem mnAvaliacoes;
     private javax.swing.JMenu mnCadastros;
-    private javax.swing.JMenuItem mnClientes;
+    private javax.swing.JMenuItem mnEquipes;
     private javax.swing.JMenu mnJanelas;
     private javax.swing.JMenuItem mnRelatorio_OS;
     private javax.swing.JMenu mnRelatorios;
     private javax.swing.JMenu mnSair;
     private javax.swing.JMenuItem mnSairTela;
-    private javax.swing.JMenuItem mnTeste;
     private javax.swing.JMenuItem mnUsuarios;
     // End of variables declaration//GEN-END:variables
 

@@ -59,6 +59,7 @@ public class Tela_Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela de Login");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnLogin.setBorder(javax.swing.BorderFactory.createTitledBorder("Login"));
 
@@ -111,24 +112,9 @@ public class Tela_Login extends javax.swing.JFrame {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(pnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
-        setSize(new java.awt.Dimension(284, 177));
+        setSize(new java.awt.Dimension(288, 182));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -137,7 +123,9 @@ public class Tela_Login extends javax.swing.JFrame {
         if ( new File("ponte.db").length() == 0){
             CriaTabelaBanco a = new CriaTabelaBanco();
             a.criaTabelaUsuario();
-            a.criaTabelaClientes();
+            a.criaTabelaEquipes();
+            a.criaTabelaAvaliacoes();
+            a.criaTabelaAvaliacoesEquipe();
             a.criaUsuarioPadrao();
         }
         // TODO add your handling code here:
