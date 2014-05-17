@@ -48,13 +48,13 @@ public class Controla_Avaliacoes {
                     System.out.println("MAX ID_AVALIACAO: " + objAvaliacao.obterId_Avaliacao());
 
                     wSQL ="";
-                    wSQL  += " INSERT INTO C_Avaliacaos ";
+                    wSQL  += " INSERT INTO c_avaliacoes ";
                     wSQL  += " (Data_Criacao,";
                     wSQL  += " Usuario_Criacao,";
                     wSQL  += " Data_Exclusao,";
                     wSQL  += " Usuario_Exclusao,";
-                    wSQL  += " Id_Avaliacao,";
-                    wSQL  += " Data_Avaliacao,";
+                    wSQL  += " id_avaliacao,";
+                    wSQL  += " data_avaliacao";
                     wSQL  += " ) VALUES(";
                     wSQL  += "'" + objAvaliacao.obterData_Criacao() + "',";
                     wSQL  += "'" + objAvaliacao.obterUsuario_Criacao() + "',";
@@ -65,11 +65,12 @@ public class Controla_Avaliacoes {
             System.out.println("INSERT AVALIAÇÃO: " + wSQL);
             boolean resultado = Tela_Login.stmt.execute(wSQL);
             if (resultado != true) {
-                return 1;
+                return objAvaliacao.obterId_Avaliacao();
             }
         } catch (Exception e) {
         }
         return 0;
+        //return objAvaliacao.obterId_Avaliacao();
     }
 
     public int alterarAvaliacao() {

@@ -48,7 +48,7 @@ public class Controla_Equipes {
                     System.out.println("MAX ID_CLIENTE: " + objEquipe.obterId_Equipe());
 
                     wSQL ="";
-                    wSQL  += " INSERT INTO C_Equipes ";
+                    wSQL  += " INSERT INTO c_equipes ";
                     wSQL  += " (Data_Criacao,";
                     wSQL  += " Usuario_Criacao,";
                     wSQL  += " Data_Exclusao,";
