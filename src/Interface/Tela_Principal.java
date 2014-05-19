@@ -15,6 +15,7 @@ import Modelo.Clientes;
 import Modelo.ConexaoBD;
 import Controle.Controla_Clientes;
 import Ferramentas.CaixaDeDialogo;
+import Ferramentas.Cronometro;
 import Ferramentas.Formatacao;
 import Ferramentas.Validacao;
 import java.sql.Connection;
@@ -673,7 +674,7 @@ public class Tela_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_dtgResultadosMousePressed
 
     private void btNovo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovo2ActionPerformed
-        
+
     }//GEN-LAST:event_btNovo2ActionPerformed
 
     private void btExcluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluir1ActionPerformed
