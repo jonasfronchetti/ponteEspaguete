@@ -8,6 +8,7 @@ package Ferramentas;
 import Interface.Tela_Avaliacoes;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 
 /**
@@ -18,13 +19,16 @@ public class Cronometro extends Thread {
     private JLabel label;
     private int tempo;
     private Tela_Avaliacoes tAvalia;
-    public Cronometro(JLabel label, int tempo, Tela_Avaliacoes tAvalia) {
+    private JButton botao;
+    public Cronometro(JLabel label, int tempo, Tela_Avaliacoes tAvalia, JButton botao) {
         this.label = label;
         this.tempo = tempo;
         this.tAvalia = tAvalia;
+        this.botao = botao;
     }
 
     public void run() {
+        botao.setEnabled(false);
         while (tempo > 0){
             label.setText(tempo+"");
             try {
@@ -35,6 +39,7 @@ public class Cronometro extends Thread {
             tempo --;
         }
         label.setText(tempo+"");
+        botao.setEnabled(true);
         tAvalia.capturaPeso();
     }
 

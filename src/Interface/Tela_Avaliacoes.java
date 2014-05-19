@@ -825,16 +825,10 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_dtgResultadosMousePressed
 
-<<<<<<< HEAD
-    private void btIniciaTimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIniciaTimerActionPerformed
-=======
     public void capturaPeso(){
         double wPeso;
         int wControle;
->>>>>>> 818e71e2916a2dd64145eade712b96327d688302
         try{
-            double wPeso;
-            int wControle;
             lblAprovado.setText("");
             //Cronometro();
         
@@ -866,7 +860,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         
     }
     private void btIniciaTimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIniciaTimerActionPerformed
-        Cronometro crono = new Cronometro(lblTimer1, 10, this);
+        Cronometro crono = new Cronometro(lblTimer1, 10, this, btIniciaTimer);
         crono.start();      
     }//GEN-LAST:event_btIniciaTimerActionPerformed
 
