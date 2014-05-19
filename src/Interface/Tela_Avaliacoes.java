@@ -97,12 +97,11 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        btAdicionar = new javax.swing.JButton();
         btAlterar = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
         btFechar = new javax.swing.JButton();
-        btExcluir = new javax.swing.JButton();
         btNovo = new javax.swing.JButton();
+        btExcluir = new javax.swing.JButton();
         tbpAvaliacoes = new javax.swing.JTabbedPane();
         pnlConsulta = new javax.swing.JLayeredPane();
         jPanel2 = new javax.swing.JPanel();
@@ -141,6 +140,8 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         lblTimer1 = new javax.swing.JLabel();
         lblAprovado = new javax.swing.JLabel();
         btExcluir1 = new javax.swing.JButton();
+        btAdicionarEquipe = new javax.swing.JButton();
+        btExcluirEquipe = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         lblLista1 = new javax.swing.JLabel();
         lblLista2 = new javax.swing.JLabel();
@@ -159,15 +160,6 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Confirma.png"))); // NOI18N
-        btAdicionar.setText("Adicionar");
-        btAdicionar.setPreferredSize(new java.awt.Dimension(77, 25));
-        btAdicionar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAdicionarActionPerformed(evt);
-            }
-        });
 
         btAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Lapis2.png"))); // NOI18N
         btAlterar.setText("Alterar");
@@ -196,6 +188,14 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
             }
         });
 
+        btNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Mais.png"))); // NOI18N
+        btNovo.setText("Novo");
+        btNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btNovoActionPerformed(evt);
+            }
+        });
+
         btExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Exclui.png"))); // NOI18N
         btExcluir.setText("Excluir");
         btExcluir.setPreferredSize(new java.awt.Dimension(77, 25));
@@ -205,47 +205,37 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
             }
         });
 
-        btNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Mais.png"))); // NOI18N
-        btNovo.setText("Novo");
-        btNovo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btNovoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btFechar, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))
+                .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(84, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btFechar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btNovo)
-                    .addComponent(btAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btFechar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 620, -1));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisa"));
 
@@ -391,8 +381,10 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
 
         jLabel4.setText("Equipe");
 
+        txtId_Equipe.setEditable(false);
         txtId_Equipe.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
+        txtNome_Equipe.setEditable(false);
         txtNome_Equipe.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
         btNovo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Mais.png"))); // NOI18N
@@ -443,10 +435,10 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btPesquisarEquipe, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPeso_Ponte, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtPeso_Ponte, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(lblPorta)
                         .addGap(6, 6, 6)
                         .addComponent(txtPorta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -487,17 +479,18 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btIniciaTimer.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btIniciaTimer.setText("INICIAR TIMER");
+        btIniciaTimer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/timer.png"))); // NOI18N
+        btIniciaTimer.setText("START");
         btIniciaTimer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btIniciaTimerActionPerformed(evt);
             }
         });
-        jPanel6.add(btIniciaTimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 45));
+        jPanel6.add(btIniciaTimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 120, 45));
 
         lblPesoSuportado.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblPesoSuportado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPesoSuportado.setText("0");
+        lblPesoSuportado.setText("55.4");
         lblPesoSuportado.setOpaque(true);
         jPanel6.add(lblPesoSuportado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 110, 40));
 
@@ -505,23 +498,46 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         lblTimer1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTimer1.setText("10");
         lblTimer1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel6.add(lblTimer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 22, 60, 40));
+        jPanel6.add(lblTimer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 60, 40));
 
+        lblAprovado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblAprovado.setForeground(new java.awt.Color(0, 204, 0));
         lblAprovado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAprovado.setText("PESO VALIDADO");
+        lblAprovado.setText("PESO APROVADO");
         jPanel6.add(lblAprovado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 110, 20));
 
         btExcluir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Exclui.png"))); // NOI18N
-        btExcluir1.setText("INF. PROBLEMA");
+        btExcluir1.setText("Problema");
         btExcluir1.setPreferredSize(new java.awt.Dimension(77, 25));
         btExcluir1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btExcluir1ActionPerformed(evt);
             }
         });
-        jPanel6.add(btExcluir1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 180, -1));
+        jPanel6.add(btExcluir1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 100, -1));
 
-        jpManutencao.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 350, 110));
+        btAdicionarEquipe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Confirma.png"))); // NOI18N
+        btAdicionarEquipe.setText("Adicionar");
+        btAdicionarEquipe.setOpaque(false);
+        btAdicionarEquipe.setPreferredSize(new java.awt.Dimension(77, 25));
+        btAdicionarEquipe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAdicionarEquipeActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btAdicionarEquipe, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 100, -1));
+
+        btExcluirEquipe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Exclui.png"))); // NOI18N
+        btExcluirEquipe.setText("Excluir");
+        btExcluirEquipe.setPreferredSize(new java.awt.Dimension(77, 25));
+        btExcluirEquipe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirEquipeActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btExcluirEquipe, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 94, -1));
+
+        jpManutencao.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 350, 140));
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Próximas Equipes"));
         jPanel7.setLayout(null);
@@ -542,12 +558,12 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         jPanel7.add(lblLista3);
         lblLista3.setBounds(170, 20, 140, 20);
 
-        jpManutencao.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 350, 70));
+        jpManutencao.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 350, 70));
 
         lblPosicaoAtual.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblPosicaoAtual.setForeground(new java.awt.Color(51, 51, 255));
         lblPosicaoAtual.setText("PosiçãoAtual:");
-        jpManutencao.add(lblPosicaoAtual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 310, -1));
+        jpManutencao.add(lblPosicaoAtual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 330, -1));
 
         pnlManutencao.add(jpManutencao);
         jpManutencao.setBounds(0, 0, 720, 400);
@@ -639,46 +655,51 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
             tbpAvaliacoes.setSelectedIndex(1);
             txtNome_Equipe.requestFocus();
             btAlterar.setVisible(true);
-            btExcluir.setVisible(true);
-            btNovo.setVisible(true);
-            btAdicionar.setVisible(false);
+            //btExcluir.setVisible(true);
+            //btNovo.setVisible(true);
+            btAdicionarEquipe.setVisible(false);
 
-            ctlEquipe = new Controla_Equipes(Equipes, dtgAvaliacoes);
+            ctlAvaliacoes = new Controla_Avaliacoes(avaliacoes, dtgAvaliacoes);
 
-            Equipes.definirId_Equipe(Integer.parseInt(coluna1));
-            wControle = ctlEquipe.buscarEquipe();
+            avaliacoes.definirId_Avaliacao(Integer.parseInt(coluna1));
+            wControle = ctlAvaliacoes.buscarAvaliacao();
                 if (wControle < 0){
-                CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao buscar Equipe no BD!");
+                    CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao buscar Prova no BD!");
                 } else {
-                if (wControle == 0)
-                TelaAlteracao();
+                    if (wControle == 0)
+                    TelaAlteracao();
+                    //AtualizaAvaliacoesEquipes();
                 }
-     }
-    }//GEN-LAST:event_dtgAvaliacoesMousePressed
-
-    private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
-        // TODO add your handling code here:
-        int wControle = 0;
-        String xMensagemValidacao = "";
-        
-        xMensagemValidacao = ValidaDados();
-        if (xMensagemValidacao.equals("")){
-        System.out.println("Validou Dados");
-        GuardaDados(true);
-        System.out.println("Guardou Dados");
-
-        wControle = ctlEquipe.gravarEquipe();
-        if (wControle != 0){
-           CaixaDeDialogo.obterinstancia().exibirMensagem("Equipe gravado com sucesso!");
-            LimpaTela(true,false);
-        } else {
-           CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao gravar cliente!");
-           }
-        } else {
-        CaixaDeDialogo.obterinstancia().exibirMensagem("Erros de Validação: \n" + xMensagemValidacao);
         }
-    }//GEN-LAST:event_btAdicionarActionPerformed
+    }//GEN-LAST:event_dtgAvaliacoesMousePressed
+    
+    private void AdicionarEquipe(){
+        try{
+            int wControle = 0;
+            String xMensagemValidacao = "";
 
+            xMensagemValidacao = ValidaDados();
+            if (xMensagemValidacao.equals("")){
+                System.out.println("Validou Dados");
+                GuardaDadosAvaliacaoEquipe(true, "");
+                System.out.println("Guardou Dados");
+
+                wControle = ctlAvaliacoes_Equipe.gravarAvaliacao_Equipe();
+                if (wControle != 0){
+                   CaixaDeDialogo.obterinstancia().exibirMensagem("Avaliação gravada com sucesso!");
+                    LimpaTela(false,false);
+                } else {
+                   CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao gravar Avaliação!");
+                   }
+            } else {
+                CaixaDeDialogo.obterinstancia().exibirMensagem("Erros de Validação: \n" + xMensagemValidacao);
+            }
+            
+        }catch(Exception ex){
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Ocorreu um erro: \n" + ex.getMessage().toString());
+        }
+    }
+    
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         // TODO add your handling code here:
         int wControle = 0;
@@ -686,22 +707,22 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         char wChar = 'p';
         boolean wPergunta = false;
 
-        wPergunta = CaixaDeDialogo.obterinstancia().pedirConfirmacao("Tem certeza de que deseja excluir o Equipe?","",wChar);
+        wPergunta = CaixaDeDialogo.obterinstancia().pedirConfirmacao("Tem certeza de que deseja excluir a Avaliação?","",wChar);
 
         if (wPergunta == true){
-        Equipes.definirId_Equipe(Integer.parseInt(txtId_Prova.getText()));
-        Equipes.definirUsuario_Exclusao(Tela_Login.objMenu.mIdUsuarioLogin);
-        Date data = new Date();
-        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy hh:mm");
-        formatador.format(data);
-        Equipes.definirData_Exclusao(formatador.format(data));
-        wControle = ctlEquipe.excluirEquipe();
-        if (wControle != 0){
-           CaixaDeDialogo.obterinstancia().exibirMensagem("Equipe excluído com sucesso!");
-           LimpaTela(true,false);
-        } else {
-           CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao excluir cliente!");
-          }
+            Equipes.definirId_Equipe(Integer.parseInt(txtId_Prova.getText()));
+            Equipes.definirUsuario_Exclusao(Tela_Login.objMenu.mIdUsuarioLogin);
+            Date data = new Date();
+            SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+            formatador.format(data);
+            Equipes.definirData_Exclusao(formatador.format(data));
+            wControle = ctlEquipe.excluirEquipe();
+            if (wControle != 0){
+               CaixaDeDialogo.obterinstancia().exibirMensagem("Equipe excluído com sucesso!");
+               LimpaTela(true,false);
+            } else {
+               CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao excluir cliente!");
+            }
         }
     }//GEN-LAST:event_btExcluirActionPerformed
 
@@ -771,13 +792,40 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
     }//GEN-LAST:event_dtgResultadosMouseClicked
 
     private void dtgResultadosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dtgResultadosMousePressed
-        // TODO add your handling code here:
+        int wControle;
+        int linhaSelecionada = dtgResultados.getSelectedRow();//pega a linha selecionada
+        String coluna1 = dtgResultados.getModel().getValueAt(linhaSelecionada, 0).toString(); // Primeira coluna da linha
+        //String coluna2 = dtgResultados.getModel().getValueAt(linhaSelecionada, 1).toString(); // SEgunda coluna da linha
+        
+        if (dtgResultados.isColumnSelected(3)){
+            //tbpAvaliacoes.setSelectedIndex(1);
+            //txtNome_Equipe.requestFocus();
+            //btAlterar.setVisible(true);
+            btExcluirEquipe.setVisible(true);
+            //btNovo.setVisible(true);
+            btAdicionarEquipe.setVisible(false);
+
+            ctlAvaliacoes_Equipe = new Controla_Avaliacoes_Equipe(avaliacao_Equipe, dtgResultados);
+
+            avaliacao_Equipe.definirId_Avaliacao(Integer.parseInt(txtId_Prova.getText()));
+            avaliacao_Equipe.definirId_Equipe(Integer.parseInt(coluna1));
+            wControle = ctlAvaliacoes_Equipe.buscarAvaliacao_Equipe();
+                if (wControle < 0){
+                    CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao buscar Prova no BD!");
+                } else {
+                    if (wControle == 0)
+                    txtId_Equipe.setText(Integer.toString(avaliacao_Equipe.obterId_Equipe()));
+                    txtId_Prova.setText(Integer.toString(avaliacao_Equipe.obterId_Avaliacao()));
+                    txtNome_Equipe.setText(avaliacao_Equipe.obterNome_Equipe());
+                    txtPeso_Ponte.setText(Double.toString(avaliacao_Equipe.obterPeso_Ponte()));
+                }
+        }
     }//GEN-LAST:event_dtgResultadosMousePressed
 
     private void btIniciaTimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIniciaTimerActionPerformed
-        double wPeso;
-        int wControle;
         try{
+            double wPeso;
+            int wControle;
             lblAprovado.setText("");
             Cronometro();
         
@@ -792,7 +840,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
                 lblAprovado.setText("PESO NÃO VALIDADO");
                 
                 //salva o resultado
-                GuardaDadosAvaliacaoEquipe();
+                GuardaDadosAvaliacaoEquipe(true, "");
                 wControle = ctlAvaliacoes_Equipe.gravarAvaliacao_Equipe();
             }
             
@@ -801,7 +849,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
             
             //wControle2 = Integer.parseInt(DLLInterface.BalancaLider.CapturarPeso(4, 9600) + "");
             //wControle = DLLInterface.BalancaLider.CapturarPeso(Integer.parseInt(txtPorta.getText()), Integer.parseInt(txtVelocidade.getText()));
-            //wControle = DLLInterface.BalancaLider.Zerar(Integer.parseInt(txtPorta.getText()), Integer.parseInt(txtVelocidade.getText()));
+            wPeso = DLLInterface.BalancaLider.Zerar(Integer.parseInt(txtPorta.getText()), 9600);
             
         } catch(Exception ex){
             System.out.println("ERRO NO BOTÃO TIMER: " + ex.getMessage());
@@ -814,9 +862,29 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
     }//GEN-LAST:event_btExcluir1ActionPerformed
 
     private void btPesquisarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarEquipeActionPerformed
-        // TODO add your handling code here:
+        Tela_Equipes objEquipes;
+        objEquipes = new Tela_Equipes(txtNome_Equipe.getText());
+        objEquipes.vSelecao = true;
+        objEquipes.btCancela.setEnabled(true);
+        objEquipes.btConfirmar.setEnabled(true);
+        objEquipes.setVisible(true);
     }//GEN-LAST:event_btPesquisarEquipeActionPerformed
 
+    private void btAdicionarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarEquipeActionPerformed
+        AdicionarEquipe();
+        AtualizaAvaliacoesEquipes();
+    }//GEN-LAST:event_btAdicionarEquipeActionPerformed
+
+    private void btExcluirEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirEquipeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btExcluirEquipeActionPerformed
+
+    public static void RecebeEquipe(String Cod_Equipe, String Nome_Equipe, String Participantes_Equipe){
+        txtId_Equipe.setText(Cod_Equipe);
+        txtNome_Equipe.setText(Nome_Equipe);
+        //txtTelefone_Cliente.setText(Participantes_Equipe);
+    }
+        
     private void AtualizaAvaliacoes(){
         //objEquipes.setNome(txNomeMotorista.getText());
         //objEquipes.definirNome_Equipe('teste');
@@ -859,7 +927,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         ctlAvaliacoes_Equipe = new Controla_Avaliacoes_Equipe(avaliacao_Equipe, dtgResultados);
         
         //wControle = objEquipes_Implem.buscaEquipes();
-        //ctlAvaliacoes.PreencheAvaliacoes("","","");
+        ctlAvaliacoes_Equipe.PreencheAvaliacoes_Equipe(avaliacoes.obterId_Avaliacao());
         //PreencheComboPesquisa();
     }
 
@@ -902,18 +970,36 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         }
     }
     
-    private void GuardaDadosAvaliacaoEquipe() {
+    private void GuardaDadosAvaliacaoEquipe(boolean pAprovado, String pProblema) {
 
-        avaliacao_Equipe.definirId_Equipe(Integer.parseInt(txtId_Equipe.getText()));
-        avaliacao_Equipe.definirId_Avaliacao(Integer.parseInt(txtId_Prova.getText()));
-        avaliacao_Equipe.definirPeso_Ponte(Double.parseDouble(txtPeso_Ponte.getText()));
-        avaliacao_Equipe.definirPontuacao(Double.parseDouble(lblPesoSuportado.getText()));
-        
-        if (lblAprovado.getText().equals("PESO APROVADO")){
-            avaliacao_Equipe.definirPontuacao(1);
+        if (pAprovado == true){
+            avaliacao_Equipe.definirId_Equipe(Integer.parseInt(txtId_Equipe.getText()));
+            avaliacao_Equipe.definirId_Avaliacao(Integer.parseInt(txtId_Prova.getText()));
+            avaliacao_Equipe.definirPeso_Ponte(Double.parseDouble(txtPeso_Ponte.getText()));
+            avaliacao_Equipe.definirPontuacao(Double.parseDouble(lblPesoSuportado.getText()));
+            avaliacao_Equipe.definirProblema("");
+            avaliacao_Equipe.definirData_Criacao(txtData_Criacao.getText());
+            avaliacao_Equipe.definirUsuario_Criacao(Tela_Login.objMenu.mIdUsuarioLogin);
+            
+            if (lblAprovado.getText().equals("PESO APROVADO")){
+                avaliacao_Equipe.definirAprovado(1);
+            }else{
+                avaliacao_Equipe.definirAprovado(0);
+            } 
         }else{
-            avaliacao_Equipe.definirPontuacao(0);
+            avaliacao_Equipe.definirId_Equipe(Integer.parseInt(txtId_Equipe.getText()));
+            avaliacao_Equipe.definirId_Avaliacao(Integer.parseInt(txtId_Prova.getText()));
+            avaliacao_Equipe.definirPeso_Ponte(Double.parseDouble(txtPeso_Ponte.getText()));
+            avaliacao_Equipe.definirPontuacao(Double.parseDouble(lblPesoSuportado.getText()));
+            avaliacao_Equipe.definirProblema(pProblema);
+
+            //if (lblAprovado.getText().equals("PESO APROVADO")){
+            //    avaliacao_Equipe.definirAprovado(1);
+            //}else{
+                avaliacao_Equipe.definirAprovado(0);
+            //}
         }
+        
         
     }
 
@@ -923,7 +1009,8 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         tbpAvaliacoes.setSelectedIndex(1);
         txtId_Prova.setText(Integer.toString(avaliacoes.obterId_Avaliacao()));
         txtData_Criacao.setText(avaliacoes.obterData_Avaliacao());
-        
+        btAdicionarEquipe.setVisible(true);
+        btExcluir.setVisible(true);
         //String data = Formatacao.ajustaDataDMA(Equipes.obterData_Criacao());
         //txtData_Criacao.setText(data);
         
@@ -936,29 +1023,34 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
 
         txtCampoPesquisa.setText("");
         txtId_Prova.setText("");
+        txtId_Equipe.setText("");
         txtNome_Equipe.setText("");
-        //txtTelefone_Equipe.setText("");
+        txtPeso_Ponte.setText("");
         Date data = new Date();
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy hh:mm");
         formatador.format(data);
         txtData_Criacao.setText(formatador.format(data));
         System.out.println("Data Criacao:" + txtData_Criacao.getText());
-        
+        btAdicionarEquipe.setVisible(true);
+        btExcluirEquipe.setVisible(false);
+            
         if (LimpaTudo == true){
             AtualizaAvaliacoes();
             jpManutencao.setEnabled(false);
             tbpAvaliacoes.setSelectedIndex(0);
             txtCampoPesquisa.requestFocus();
             btNovo.setVisible(true);
-            btAdicionar.setVisible(false);
+            //btAdicionar.setVisible(false);
             btAlterar.setVisible(false);
             btExcluir.setVisible(false);
+        }else{
+            tbpAvaliacoes.setSelectedIndex(1);
+            txtNome_Equipe.requestFocus();
         }
         if (NovoRegistro == true){
             tbpAvaliacoes.setSelectedIndex(1);
             txtNome_Equipe.requestFocus();
             btNovo.setVisible(false);
-            btAdicionar.setVisible(true);
             btAlterar.setVisible(false);
             btExcluir.setVisible(false);
             jpManutencao.setEnabled(true);
@@ -979,10 +1071,11 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
      
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAdicionar;
+    private javax.swing.JButton btAdicionarEquipe;
     private javax.swing.JButton btAlterar;
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btExcluir1;
+    private javax.swing.JButton btExcluirEquipe;
     private javax.swing.JButton btFechar;
     private javax.swing.JButton btIniciaTimer;
     private javax.swing.JButton btLimpar;
@@ -1025,9 +1118,9 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
     private javax.swing.JTabbedPane tbpAvaliacoes;
     private javax.swing.JTextField txtCampoPesquisa;
     private javax.swing.JFormattedTextField txtData_Criacao;
-    private javax.swing.JTextField txtId_Equipe;
+    private static javax.swing.JTextField txtId_Equipe;
     private javax.swing.JTextField txtId_Prova;
-    private javax.swing.JTextField txtNome_Equipe;
+    private static javax.swing.JTextField txtNome_Equipe;
     private javax.swing.JTextField txtPeso_Ponte;
     private javax.swing.JTextField txtPorta;
     // End of variables declaration//GEN-END:variables

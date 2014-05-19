@@ -48,7 +48,7 @@ public class Controla_Avaliacoes_Equipe {
                     //System.out.println("MAX ID_AVALIACAO: " + objAvaliacao.obterId_Avaliacao());
 
                     wSQL ="";
-                    wSQL  += " INSERT INTO C_Avaliacaos_Equipe ";
+                    wSQL  += " INSERT INTO C_Avaliacoes_Equipe ";
                     wSQL  += " (Data_Criacao,";
                     wSQL  += " Usuario_Criacao,";
                     wSQL  += " Data_Exclusao,";
@@ -58,7 +58,7 @@ public class Controla_Avaliacoes_Equipe {
                     wSQL  += " pontuacao,";
                     wSQL  += " peso_ponte,";
                     wSQL  += " problema,";
-                    wSQL  += " aprovado,";
+                    wSQL  += " aprovado ";
                     wSQL  += " ) VALUES(";
                     wSQL  += "'" + objAvaliacao_Equipe.obterData_Criacao() + "',";
                     wSQL  += "'" + objAvaliacao_Equipe.obterUsuario_Criacao() + "',";
@@ -137,6 +137,7 @@ public class Controla_Avaliacoes_Equipe {
             SQL += " FROM c_avaliacoes_equipe A, c_equipes E ";
             SQL += " WHERE A.Data_Exclusao is null ";
             SQL += " AND A.id_Avaliacao = " + id_avaliacao;
+            SQL += " AND A.Id_Equipe = E.Id_Equipe";
             SQL += " AND A.aprovado = 1";
             SQL += " ORDER BY A.pontuacao, A.peso_ponte, E.nome_equipe ";
             
@@ -146,7 +147,7 @@ public class Controla_Avaliacoes_Equipe {
                 Vector<Object> linha = new Vector<Object>();
                 linha.add(result.getInt(1));
                 linha.add(result.getString(2));
-                linha.add(result.getInt(3));
+                linha.add(result.getDouble(3));
                 linha.add("X");
                 dadosTabela.add(linha);
             }
@@ -211,13 +212,15 @@ public class Controla_Avaliacoes_Equipe {
          ResultSet rs = null;
 
          String SQL = "";
-         SQL = "SELECT Data_Criacao, Usuario_Criacao, Usuario_Exclusao, Data_Exclusao, id_avaliacao, id_equipe, pontuacao, peso_ponte, problema, aprovado ";
-         SQL += " FROM C_Avaliacoes ";
-         SQL += " WHERE Id_Avaliacao = " + objAvaliacao_Equipe.obterId_Avaliacao();
-         SQL += " AND Id_Equipe = " + objAvaliacao_Equipe.obterId_Equipe();
+         SQL = "SELECT A.Data_Criacao, A.Usuario_Criacao, A.Usuario_Exclusao, A.Data_Exclusao, A.id_avaliacao, A.id_equipe, A.pontuacao, A.peso_ponte, A.problema, A.aprovado, E.Nome_Equipe ";
+         SQL += " FROM C_Avaliacoes_Equipe A, c_equipes E ";
+         SQL += " WHERE A.Id_Equipe = E.Id_Equipe ";
+         SQL += " AND A.Id_Avaliacao = " + objAvaliacao_Equipe.obterId_Avaliacao();
+         SQL += " AND A.Id_Equipe = " + objAvaliacao_Equipe.obterId_Equipe();
          //stm.executeQuery(SQL);
 
          System.out.println ("Vai Executar Conexão em buscarAvaliacao");
+         System.out.println ("SQL = " + SQL);
          rs = Tela_Login.stmt.executeQuery(SQL);
          System.out.println ("Executou Conexão em buscarAvaliacao");
 
@@ -235,7 +238,8 @@ public class Controla_Avaliacoes_Equipe {
                 objAvaliacao_Equipe.definirPeso_Ponte(rs.getDouble(8));
                 objAvaliacao_Equipe.definirProblema(rs.getString(9));
                 objAvaliacao_Equipe.definirAprovado(rs.getInt(10));
-                }
+                objAvaliacao_Equipe.definirNomeEquipe(rs.getString(11));
+            }
             if (objAvaliacao_Equipe.obterId_Avaliacao() == 0){
               return (1);
             }

@@ -63,12 +63,12 @@ public class Tela_Login extends javax.swing.JFrame {
 
         pnLogin.setBorder(javax.swing.BorderFactory.createTitledBorder("Login"));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Login");
 
         txtLogin.setName("txtLogin"); // NOI18N
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setText("Senha");
 
         txtSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

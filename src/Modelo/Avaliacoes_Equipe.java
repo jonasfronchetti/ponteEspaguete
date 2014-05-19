@@ -20,6 +20,7 @@ public class Avaliacoes_Equipe {
     private double peso_ponte = 0;  
     private double pontuacao = 0;  
     private String problema = "";
+    private String nome_Equipe = "";
     private int aprovado = 0;
    
     /**
@@ -161,6 +162,14 @@ public class Avaliacoes_Equipe {
      */
     public void definirProblema(String Problema) {
         this.problema = Problema;
+    }
+    
+    public String obterNome_Equipe() {
+        return nome_Equipe;
+    }
+        
+    public void definirNomeEquipe(String nome_Equipe) {
+        this.nome_Equipe = nome_Equipe;
     }
 
     
