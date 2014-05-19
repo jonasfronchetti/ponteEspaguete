@@ -138,8 +138,9 @@ public class Controla_Avaliacoes_Equipe {
             SQL += " WHERE A.Data_Exclusao is null ";
             SQL += " AND A.id_Avaliacao = " + id_avaliacao;
             SQL += " AND A.Id_Equipe = E.Id_Equipe";
-            SQL += " AND A.aprovado = 1";
-            SQL += " ORDER BY A.pontuacao, A.peso_ponte, E.nome_equipe ";
+            SQL += " ORDER BY A.pontuacao, A.peso_ponte, E.nome_equipe, aprovado DESC ";
+            
+            //SQL += " AND A.aprovado = 1";
             
             result = Tela_Login.stmt.executeQuery(SQL);
 
@@ -258,7 +259,7 @@ public class Controla_Avaliacoes_Equipe {
          return (0);
      }
     
-    public int buscarPosicaoAvaliacao_Equipe()
+    public int buscarPosicaoAvaliacao_Equipe(double pPontuacao, double pPeso_Ponte)
      {
        try {
          ResultSet rs = null;
@@ -267,7 +268,8 @@ public class Controla_Avaliacoes_Equipe {
          SQL = "SELECT Quantidade = COUNT(*) ";
          SQL += " FROM c_avaliacoes_equipe ";
          SQL += " WHERE Id_Avaliacao = " + objAvaliacao_Equipe.obterId_Avaliacao();
-         SQL += " AND pontuacao >= " + objAvaliacao_Equipe.obterPontuacao();
+         SQL += " AND pontuacao >= " + pPontuacao;
+         SQL += " AND peso_Ponte <= " + pPeso_Ponte;
          SQL += " AND aprovado = 1";
          SQL += " ORDER BY pontuacao, peso_ponte ";
          //stm.executeQuery(SQL);

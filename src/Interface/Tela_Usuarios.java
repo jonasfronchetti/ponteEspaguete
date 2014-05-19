@@ -122,6 +122,7 @@ public class Tela_Usuarios extends javax.swing.JFrame {
                 formWindowClosing(evt);
             }
         });
+        getContentPane().setLayout(null);
 
         btAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Confirma.png"))); // NOI18N
         btAdicionar.setText("Adicionar");
@@ -207,6 +208,9 @@ public class Tela_Usuarios extends javax.swing.JFrame {
                     .addComponent(btAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(10, 11, 633, 47);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisa"));
 
@@ -310,133 +314,62 @@ public class Tela_Usuarios extends javax.swing.JFrame {
         pnlManutencao.setEnabled(false);
 
         jpManutencao.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jpManutencao.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtId_Usuario.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtId_Usuario.setEnabled(false);
+        jpManutencao.add(txtId_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 32, 60, -1));
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel4.setText("Nome Usuário");
+        jpManutencao.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 58, 102, 20));
 
-        lblLogin.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblLogin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblLogin.setText("Login");
+        jpManutencao.add(lblLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 84, 103, 20));
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setText("Id Usuário");
+        jpManutencao.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 32, 102, 20));
 
         txtNome_Usuario.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jpManutencao.add(txtNome_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 58, 210, -1));
 
-        jLabel5.setText("Data Criação");
+        jLabel5.setText("Data de Criação");
+        jpManutencao.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 240, 86, 20));
 
         txtData_Criacao.setEditable(false);
+        jpManutencao.add(txtData_Criacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 240, 120, -1));
 
         jLabel6.setText("Usuário Criação");
+        jpManutencao.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 266, 87, 20));
 
         txtUsuario_Criacao.setEditable(false);
+        jpManutencao.add(txtUsuario_Criacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 266, 120, -1));
 
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel7.setText("Situação");
+        jpManutencao.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 174, 103, 20));
 
         txtSituacao.setEditable(false);
+        jpManutencao.add(txtSituacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 174, 116, -1));
 
-        lblLogin2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblLogin2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblLogin2.setText("Confirmação Senha");
+        jpManutencao.add(lblLogin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 136, 103, 20));
 
-        lblLogin3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblLogin3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblLogin3.setText("Senha");
+        jpManutencao.add(lblLogin3, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 110, 103, 20));
 
         txtLogin.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jpManutencao.add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 84, 116, -1));
 
         txtSenha1.setText("*****");
+        jpManutencao.add(txtSenha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 136, 116, -1));
 
         txtSenha.setText("*****");
-
-        javax.swing.GroupLayout jpManutencaoLayout = new javax.swing.GroupLayout(jpManutencao);
-        jpManutencao.setLayout(jpManutencaoLayout);
-        jpManutencaoLayout.setHorizontalGroup(
-            jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpManutencaoLayout.createSequentialGroup()
-                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpManutencaoLayout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpManutencaoLayout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtId_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jpManutencaoLayout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNome_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(28, 28, 28))
-                    .addGroup(jpManutencaoLayout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpManutencaoLayout.createSequentialGroup()
-                                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblLogin2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtSituacao)
-                                    .addComponent(txtSenha1)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpManutencaoLayout.createSequentialGroup()
-                                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblLogin3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtSenha)
-                                    .addComponent(txtLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))))
-                        .addGap(121, 121, 121)))
-                .addGap(182, 182, 182))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpManutencaoLayout.createSequentialGroup()
-                .addGap(380, 380, 380)
-                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtData_Criacao)
-                    .addComponent(txtUsuario_Criacao))
-                .addContainerGap())
-        );
-        jpManutencaoLayout.setVerticalGroup(
-            jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpManutencaoLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtId_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNome_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLogin3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLogin2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSenha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtData_Criacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUsuario_Criacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        jpManutencao.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 116, -1));
 
         pnlManutencao.add(jpManutencao);
         jpManutencao.setBounds(10, 10, 610, 310);
@@ -463,26 +396,8 @@ public class Tela_Usuarios extends javax.swing.JFrame {
 
         tbpUsuarios.addTab("Manutenção", pnlManutencao);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tbpUsuarios, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tbpUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        getContentPane().add(tbpUsuarios);
+        tbpUsuarios.setBounds(10, 69, 633, 378);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

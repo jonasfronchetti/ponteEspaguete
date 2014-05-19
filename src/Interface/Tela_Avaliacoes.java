@@ -848,7 +848,9 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
             }
             
             //busca a posicao atraves da variavel wPeso
-            lblPosicaoAtual.setText("No momento a equipe ocupa a " + 1 + "ª posição!");
+            wControle = ctlAvaliacoes_Equipe.buscarPosicaoAvaliacao_Equipe(wPeso, Double.parseDouble(txtPeso_Ponte.getText()));
+            if (wControle != 0)
+                lblPosicaoAtual.setText("No momento a equipe ocupa a " + wControle + "ª posição!");
             
             //wControle2 = Integer.parseInt(DLLInterface.BalancaLider.CapturarPeso(4, 9600) + "");
             //wControle = DLLInterface.BalancaLider.CapturarPeso(Integer.parseInt(txtPorta.getText()), Integer.parseInt(txtVelocidade.getText()));
@@ -860,8 +862,10 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         
     }
     private void btIniciaTimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIniciaTimerActionPerformed
-        Cronometro crono = new Cronometro(lblTimer1, 10, this, btIniciaTimer);
-        crono.start();      
+        if (!txtPorta.getText().equals("")){
+            Cronometro crono = new Cronometro(lblTimer1, 10, this, btIniciaTimer);
+            crono.start();      
+        }
     }//GEN-LAST:event_btIniciaTimerActionPerformed
 
     private void btExcluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluir1ActionPerformed
@@ -985,7 +989,13 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
             avaliacao_Equipe.definirPeso_Ponte(Double.parseDouble(txtPeso_Ponte.getText()));
             avaliacao_Equipe.definirPontuacao(Double.parseDouble(lblPesoSuportado.getText()));
             avaliacao_Equipe.definirProblema("");
-            avaliacao_Equipe.definirData_Criacao(txtData_Criacao.getText());
+            
+            Date data = new Date();
+            SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+            formatador.format(data);
+            avaliacao_Equipe.definirData_Criacao(formatador.format(data));
+        
+            //avaliacao_Equipe.definirData_Criacao(txtData_Criacao.getText());
             avaliacao_Equipe.definirUsuario_Criacao(Tela_Login.objMenu.mIdUsuarioLogin);
             
             if (lblAprovado.getText().equals("PESO APROVADO")){
