@@ -15,6 +15,7 @@ import Modelo.Equipes;
 import Modelo.ConexaoBD;
 import Controle.Controla_Equipes;
 import Ferramentas.CaixaDeDialogo;
+import Ferramentas.Cronometro;
 import Ferramentas.DLLInterface;
 import Ferramentas.Formatacao;
 import Ferramentas.Validacao;
@@ -25,6 +26,8 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.JFormattedTextField;
 
@@ -822,12 +825,18 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_dtgResultadosMousePressed
 
+<<<<<<< HEAD
     private void btIniciaTimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIniciaTimerActionPerformed
+=======
+    public void capturaPeso(){
+        double wPeso;
+        int wControle;
+>>>>>>> 818e71e2916a2dd64145eade712b96327d688302
         try{
             double wPeso;
             int wControle;
             lblAprovado.setText("");
-            Cronometro();
+            //Cronometro();
         
             int wPorta = Integer.parseInt(txtPorta.getText());
             wPeso = DLLInterface.BalancaLider.CapturarPeso(wPorta, 9600);
@@ -845,7 +854,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
             }
             
             //busca a posicao atraves da variavel wPeso
-            lblPesoSuportado.setText("No momento a equipe ocupa a " + 1 + "ª posição!");
+            lblPosicaoAtual.setText("No momento a equipe ocupa a " + 1 + "ª posição!");
             
             //wControle2 = Integer.parseInt(DLLInterface.BalancaLider.CapturarPeso(4, 9600) + "");
             //wControle = DLLInterface.BalancaLider.CapturarPeso(Integer.parseInt(txtPorta.getText()), Integer.parseInt(txtVelocidade.getText()));
@@ -855,10 +864,14 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
             System.out.println("ERRO NO BOTÃO TIMER: " + ex.getMessage());
         }        
         
+    }
+    private void btIniciaTimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIniciaTimerActionPerformed
+        Cronometro crono = new Cronometro(lblTimer1, 10, this);
+        crono.start();      
     }//GEN-LAST:event_btIniciaTimerActionPerformed
 
     private void btExcluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluir1ActionPerformed
-        // TODO add your handling code here:
+     
     }//GEN-LAST:event_btExcluir1ActionPerformed
 
     private void btPesquisarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarEquipeActionPerformed
