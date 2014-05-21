@@ -26,6 +26,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
@@ -44,6 +45,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
      //Equipes objEquipe = null;
      Controla_Equipes ctlEquipe;
      Equipes Equipes = new Equipes();
+     double wPesoValidado;
      
      Controla_Avaliacoes ctlAvaliacoes;
      Avaliacoes avaliacoes = new Avaliacoes();
@@ -105,6 +107,11 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         btFechar = new javax.swing.JButton();
         btNovo = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
+        txtPesoMaximo = new javax.swing.JTextField();
+        lblPorta = new javax.swing.JLabel();
+        txtPorta = new javax.swing.JTextField();
+        cbSimulado = new javax.swing.JCheckBox();
+        lblKG = new javax.swing.JLabel();
         tbpAvaliacoes = new javax.swing.JTabbedPane();
         pnlConsulta = new javax.swing.JLayeredPane();
         jPanel2 = new javax.swing.JPanel();
@@ -131,12 +138,11 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtId_Equipe = new javax.swing.JTextField();
         txtNome_Equipe = new javax.swing.JTextField();
-        btNovo1 = new javax.swing.JButton();
         btPesquisarEquipe = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        txtLider_Equipe = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         txtPeso_Ponte = new javax.swing.JTextField();
-        lblPorta = new javax.swing.JLabel();
-        txtPorta = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         btIniciaTimer = new javax.swing.JButton();
         lblPesoSuportado = new javax.swing.JLabel();
@@ -208,6 +214,22 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
             }
         });
 
+        txtPesoMaximo.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        lblPorta.setText("PORTA");
+
+        txtPorta.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+
+        cbSimulado.setSelected(true);
+        cbSimulado.setText("SIMULADO");
+        cbSimulado.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbSimuladoItemStateChanged(evt);
+            }
+        });
+
+        lblKG.setText("KG");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -223,7 +245,17 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
                 .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbSimulado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, Short.MAX_VALUE)
+                .addComponent(lblKG)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPesoMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblPorta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPorta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,11 +266,16 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
                     .addComponent(btAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btFechar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPesoMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbSimulado)
+                    .addComponent(lblPorta, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPorta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblKG))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 620, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 770, -1));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisa"));
 
@@ -266,7 +303,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(rbContendo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(rbComecandoPor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addContainerGap(273, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,7 +316,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         );
 
         pnlConsulta.add(jPanel2);
-        jPanel2.setBounds(360, 0, 360, 90);
+        jPanel2.setBounds(360, 0, 410, 90);
         jPanel2.getAccessibleContext().setAccessibleName("Seleção");
 
         dtgAvaliacoes.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
@@ -294,7 +331,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         jScrollPane1.setViewportView(dtgAvaliacoes);
 
         pnlConsulta.add(jScrollPane1);
-        jScrollPane1.setBounds(0, 90, 720, 310);
+        jScrollPane1.setBounds(0, 90, 770, 310);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisa"));
 
@@ -369,33 +406,41 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
         );
 
-        jpManutencao.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 340, 380));
+        jpManutencao.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 340, 380));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados"));
+        jPanel5.setLayout(null);
 
         jLabel2.setText("Id");
+        jPanel5.add(jLabel2);
+        jLabel2.setBounds(10, 20, 30, 20);
 
         txtId_Prova.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtId_Prova.setEnabled(false);
+        jPanel5.add(txtId_Prova);
+        txtId_Prova.setBounds(50, 20, 30, 20);
 
         jLabel5.setText("Data");
+        jPanel5.add(jLabel5);
+        jLabel5.setBounds(110, 20, 32, 20);
 
         txtData_Criacao.setEditable(false);
+        jPanel5.add(txtData_Criacao);
+        txtData_Criacao.setBounds(140, 20, 102, 20);
 
         jLabel4.setText("Equipe");
+        jPanel5.add(jLabel4);
+        jLabel4.setBounds(10, 50, 40, 20);
 
         txtId_Equipe.setEditable(false);
         txtId_Equipe.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jPanel5.add(txtId_Equipe);
+        txtId_Equipe.setBounds(50, 50, 30, 20);
 
         txtNome_Equipe.setEditable(false);
         txtNome_Equipe.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-
-        btNovo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Mais.png"))); // NOI18N
-        btNovo1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btNovo1ActionPerformed(evt);
-            }
-        });
+        jPanel5.add(txtNome_Equipe);
+        txtNome_Equipe.setBounds(90, 50, 162, 20);
 
         btPesquisarEquipe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/lupa.png"))); // NOI18N
         btPesquisarEquipe.addActionListener(new java.awt.event.ActionListener() {
@@ -403,80 +448,27 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
                 btPesquisarEquipeActionPerformed(evt);
             }
         });
+        jPanel5.add(btPesquisarEquipe);
+        btPesquisarEquipe.setBounds(260, 50, 23, 25);
 
         jLabel6.setText("Peso da Ponte (Kg)");
+        jPanel5.add(jLabel6);
+        jLabel6.setBounds(220, 80, 100, 20);
+
+        txtLider_Equipe.setEditable(false);
+        txtLider_Equipe.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jPanel5.add(txtLider_Equipe);
+        txtLider_Equipe.setBounds(50, 80, 162, 20);
+
+        jLabel7.setText("Líder");
+        jPanel5.add(jLabel7);
+        jLabel7.setBounds(10, 80, 40, 20);
 
         txtPeso_Ponte.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jPanel5.add(txtPeso_Ponte);
+        txtPeso_Ponte.setBounds(330, 80, 59, 20);
 
-        lblPorta.setText("PORTA");
-
-        txtPorta.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(txtId_Prova, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtData_Criacao, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(txtId_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(txtNome_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btPesquisarEquipe, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPeso_Ponte, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblPorta)
-                        .addGap(6, 6, 6)
-                        .addComponent(txtPorta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(89, 89, 89)
-                .addComponent(btNovo1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtId_Prova, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtData_Criacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtId_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtNome_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btPesquisarEquipe))
-                    .addComponent(btNovo1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtPeso_Ponte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblPorta, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPorta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jpManutencao.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 350, 110));
+        jpManutencao.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 400, 110));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Prova"));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -493,7 +485,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
 
         lblPesoSuportado.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblPesoSuportado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPesoSuportado.setText("55.4");
+        lblPesoSuportado.setText("0");
         lblPesoSuportado.setOpaque(true);
         jPanel6.add(lblPesoSuportado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 110, 40));
 
@@ -506,7 +498,6 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         lblAprovado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblAprovado.setForeground(new java.awt.Color(0, 204, 0));
         lblAprovado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAprovado.setText("PESO APROVADO");
         jPanel6.add(lblAprovado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 110, 20));
 
         btExcluir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Exclui.png"))); // NOI18N
@@ -540,7 +531,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         });
         jPanel6.add(btExcluirEquipe, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 94, -1));
 
-        jpManutencao.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 350, 140));
+        jpManutencao.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 400, 140));
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Próximas Equipes"));
         jPanel7.setLayout(null);
@@ -561,19 +552,19 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         jPanel7.add(lblLista3);
         lblLista3.setBounds(170, 20, 140, 20);
 
-        jpManutencao.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 350, 70));
+        jpManutencao.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 400, 70));
 
         lblPosicaoAtual.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblPosicaoAtual.setForeground(new java.awt.Color(51, 51, 255));
         lblPosicaoAtual.setText("PosiçãoAtual:");
-        jpManutencao.add(lblPosicaoAtual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 330, -1));
+        jpManutencao.add(lblPosicaoAtual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 390, -1));
 
         pnlManutencao.add(jpManutencao);
-        jpManutencao.setBounds(0, 0, 720, 400);
+        jpManutencao.setBounds(0, 0, 770, 400);
 
         tbpAvaliacoes.addTab("Manutenção", pnlManutencao);
 
-        getContentPane().add(tbpAvaliacoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 69, 730, 430));
+        getContentPane().add(tbpAvaliacoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 69, 780, 430));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -786,10 +777,6 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btNovoActionPerformed
 
-    private void btNovo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovo1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btNovo1ActionPerformed
-
     private void dtgResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dtgResultadosMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_dtgResultadosMouseClicked
@@ -820,7 +807,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
                     txtId_Equipe.setText(Integer.toString(avaliacao_Equipe.obterId_Equipe()));
                     txtId_Prova.setText(Integer.toString(avaliacao_Equipe.obterId_Avaliacao()));
                     txtNome_Equipe.setText(avaliacao_Equipe.obterNome_Equipe());
-                    txtPeso_Ponte.setText(Double.toString(avaliacao_Equipe.obterPeso_Ponte()));
+                    txtPesoMaximo.setText(Double.toString(avaliacao_Equipe.obterPeso_Ponte()));
                 }
         }
     }//GEN-LAST:event_dtgResultadosMousePressed
@@ -830,31 +817,42 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         int wControle;
         try{
             lblAprovado.setText("");
-            //Cronometro();
-        
-            int wPorta = Integer.parseInt(txtPorta.getText());
-            wPeso = DLLInterface.BalancaLider.CapturarPeso(wPorta, 9600);
             
-            if (wPeso > Double.parseDouble(lblPesoSuportado.getText())){
+            if (cbSimulado.isSelected() == false){
+                int wPorta = Integer.parseInt(txtPorta.getText());
+                wPeso = DLLInterface.BalancaLider.CapturarPeso(wPorta, 9600);
+                
+            }else{
+                Random random = new Random();
+                wPeso = random.nextInt(Integer.parseInt(txtPesoMaximo.getText()));
+             
+            }
+            
+            if (wPeso >= Double.parseDouble(lblPesoSuportado.getText())){
                 lblPesoSuportado.setOpaque(false);
                 lblPesoSuportado.setText(wPeso + "");
-                lblAprovado.setText("PESO APROVADO");
+                lblAprovado.setText("PESO APROVADO!");
+                
+                wControle = ctlAvaliacoes_Equipe.buscarPosicaoAvaliacao_Equipe(Double.parseDouble(lblPesoSuportado.getText()), Double.parseDouble(txtPeso_Ponte.getText()));
+                if (wControle != 0){
+                    lblPosicaoAtual.setText("No momento a equipe ocupa a " + wControle + "ª posição!");
+                }
             } else{
-                lblAprovado.setText("PESO NÃO VALIDADO");
+                lblAprovado.setText("PONTE QUEBRADA!");
                 
                 //salva o resultado
                 GuardaDadosAvaliacaoEquipe(true, "");
                 wControle = ctlAvaliacoes_Equipe.gravarAvaliacao_Equipe();
+                
+                AtualizaAvaliacoesEquipes();
+                LimpaTela(false, true);
             }
             
-            //busca a posicao atraves da variavel wPeso
-            wControle = ctlAvaliacoes_Equipe.buscarPosicaoAvaliacao_Equipe(wPeso, Double.parseDouble(txtPeso_Ponte.getText()));
-            if (wControle != 0)
-                lblPosicaoAtual.setText("No momento a equipe ocupa a " + wControle + "ª posição!");
-            
-            //wControle2 = Integer.parseInt(DLLInterface.BalancaLider.CapturarPeso(4, 9600) + "");
-            //wControle = DLLInterface.BalancaLider.CapturarPeso(Integer.parseInt(txtPorta.getText()), Integer.parseInt(txtVelocidade.getText()));
-            wPeso = DLLInterface.BalancaLider.Zerar(Integer.parseInt(txtPorta.getText()), 9600);
+            if (cbSimulado.isSelected() == false){
+                wPeso = DLLInterface.BalancaLider.Zerar(Integer.parseInt(txtPorta.getText()), 9600);
+                //wControle2 = Integer.parseInt(DLLInterface.BalancaLider.CapturarPeso(4, 9600) + "");
+                //wControle = DLLInterface.BalancaLider.CapturarPeso(Integer.parseInt(txtPorta.getText()), Integer.parseInt(txtVelocidade.getText()));
+            }
             
         } catch(Exception ex){
             System.out.println("ERRO NO BOTÃO TIMER: " + ex.getMessage());
@@ -862,9 +860,14 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         
     }
     private void btIniciaTimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIniciaTimerActionPerformed
-        if (!txtPorta.getText().equals("")){
+        if (cbSimulado.isSelected() == true){
             Cronometro crono = new Cronometro(lblTimer1, 10, this, btIniciaTimer);
-            crono.start();      
+            crono.start(); 
+        }else if(!txtPorta.getText().equals("")){
+            Cronometro crono = new Cronometro(lblTimer1, 10, this, btIniciaTimer);
+            crono.start();   
+        }else{
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe a Porta de Comunicação da Balança!");
         }
     }//GEN-LAST:event_btIniciaTimerActionPerformed
 
@@ -890,9 +893,25 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btExcluirEquipeActionPerformed
 
-    public static void RecebeEquipe(String Cod_Equipe, String Nome_Equipe, String Participantes_Equipe){
+    private void cbSimuladoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbSimuladoItemStateChanged
+        // TODO add your handling code here:
+        if (cbSimulado.isSelected()){
+            lblPorta.setVisible(false);
+            txtPorta.setVisible(false);
+            lblKG.setVisible(true);
+            txtPesoMaximo.setVisible(true);
+        }else{
+            lblPorta.setVisible(true);
+            txtPorta.setVisible(true);
+            lblKG.setVisible(false);
+            txtPesoMaximo.setVisible(false);
+        }
+    }//GEN-LAST:event_cbSimuladoItemStateChanged
+
+    public static void RecebeEquipe(String Cod_Equipe, String Nome_Equipe, String Lider_Equipe){
         txtId_Equipe.setText(Cod_Equipe);
         txtNome_Equipe.setText(Nome_Equipe);
+        txtLider_Equipe.setText(Lider_Equipe);
         //txtTelefone_Cliente.setText(Participantes_Equipe);
     }
         
@@ -960,7 +979,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
             xMensagem +="Nome Equipe deve ser preenchido! \n";
         }
 
-        if( txtPeso_Ponte.getText().equals("")){
+        if( txtPesoMaximo.getText().equals("")){
             xMensagem +="Peso da Ponte em Kg deve ser preenchido! \n";
         }
         
@@ -986,7 +1005,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         if (pAprovado == true){
             avaliacao_Equipe.definirId_Equipe(Integer.parseInt(txtId_Equipe.getText()));
             avaliacao_Equipe.definirId_Avaliacao(Integer.parseInt(txtId_Prova.getText()));
-            avaliacao_Equipe.definirPeso_Ponte(Double.parseDouble(txtPeso_Ponte.getText()));
+            avaliacao_Equipe.definirPeso_Ponte(Double.parseDouble(txtPesoMaximo.getText()));
             avaliacao_Equipe.definirPontuacao(Double.parseDouble(lblPesoSuportado.getText()));
             avaliacao_Equipe.definirProblema("");
             
@@ -997,23 +1016,19 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         
             //avaliacao_Equipe.definirData_Criacao(txtData_Criacao.getText());
             avaliacao_Equipe.definirUsuario_Criacao(Tela_Login.objMenu.mIdUsuarioLogin);
+            avaliacao_Equipe.definirAprovado(1); //APROVADO
             
-            if (lblAprovado.getText().equals("PESO APROVADO")){
-                avaliacao_Equipe.definirAprovado(1);
-            }else{
-                avaliacao_Equipe.definirAprovado(0);
-            } 
         }else{
             avaliacao_Equipe.definirId_Equipe(Integer.parseInt(txtId_Equipe.getText()));
             avaliacao_Equipe.definirId_Avaliacao(Integer.parseInt(txtId_Prova.getText()));
-            avaliacao_Equipe.definirPeso_Ponte(Double.parseDouble(txtPeso_Ponte.getText()));
+            avaliacao_Equipe.definirPeso_Ponte(Double.parseDouble(txtPesoMaximo.getText()));
             avaliacao_Equipe.definirPontuacao(Double.parseDouble(lblPesoSuportado.getText()));
             avaliacao_Equipe.definirProblema(pProblema);
 
             //if (lblAprovado.getText().equals("PESO APROVADO")){
             //    avaliacao_Equipe.definirAprovado(1);
             //}else{
-                avaliacao_Equipe.definirAprovado(0);
+                avaliacao_Equipe.definirAprovado(0); //NÃO APROVADO
             //}
         }
         
@@ -1042,7 +1057,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         txtId_Prova.setText("");
         txtId_Equipe.setText("");
         txtNome_Equipe.setText("");
-        txtPeso_Ponte.setText("");
+        txtPesoMaximo.setText("");
         Date data = new Date();
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy hh:mm");
         formatador.format(data);
@@ -1050,6 +1065,18 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         System.out.println("Data Criacao:" + txtData_Criacao.getText());
         btAdicionarEquipe.setVisible(true);
         btExcluirEquipe.setVisible(false);
+        
+        if (cbSimulado.isSelected()){
+            lblPorta.setVisible(false);
+            txtPorta.setVisible(false);
+            lblKG.setVisible(true);
+            txtPesoMaximo.setVisible(true);
+        }else{
+            lblPorta.setVisible(true);
+            txtPorta.setVisible(true);
+            lblKG.setVisible(false);
+            txtPesoMaximo.setVisible(false);
+        }
             
         if (LimpaTudo == true){
             AtualizaAvaliacoes();
@@ -1097,17 +1124,18 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
     private javax.swing.JButton btIniciaTimer;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btNovo;
-    private javax.swing.JButton btNovo1;
     private javax.swing.JButton btPesquisar;
     private javax.swing.JButton btPesquisarEquipe;
     private javax.swing.ButtonGroup buttonGroup1;
     private static javax.swing.JComboBox cbPesquisarPor;
+    private javax.swing.JCheckBox cbSimulado;
     private javax.swing.JTable dtgAvaliacoes;
     private javax.swing.JTable dtgResultados;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -1120,6 +1148,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel jpManutencao;
     private javax.swing.JLabel lblAprovado;
+    private javax.swing.JLabel lblKG;
     private javax.swing.JLabel lblLista1;
     private javax.swing.JLabel lblLista2;
     private javax.swing.JLabel lblLista3;
@@ -1137,7 +1166,9 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtData_Criacao;
     private static javax.swing.JTextField txtId_Equipe;
     private javax.swing.JTextField txtId_Prova;
+    private static javax.swing.JTextField txtLider_Equipe;
     private static javax.swing.JTextField txtNome_Equipe;
+    private javax.swing.JTextField txtPesoMaximo;
     private javax.swing.JTextField txtPeso_Ponte;
     private javax.swing.JTextField txtPorta;
     // End of variables declaration//GEN-END:variables

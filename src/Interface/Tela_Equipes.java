@@ -573,7 +573,7 @@ public class Tela_Equipes extends javax.swing.JFrame {
     }//GEN-LAST:event_dtgEquipesMousePressed
 
     private void btConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmarActionPerformed
-        Tela_Avaliacoes.RecebeEquipe(txtId_Equipe.getText(), txtNome_Equipe.getText(), txtEndereco_Equipe.getText());
+        Tela_Avaliacoes.RecebeEquipe(txtId_Equipe.getText(), txtNome_Equipe.getText(), txtBairro_Equipe.getText());
         dispose();
     }//GEN-LAST:event_btConfirmarActionPerformed
 
@@ -719,18 +719,24 @@ public class Tela_Equipes extends javax.swing.JFrame {
 
     private void TelaAlteracao() {
 
-        pnlManutencao.setEnabled(true);
-        txtId_Equipe.setText(Integer.toString(Equipes.obterId_Equipe()));
-        txtNome_Equipe.setText(Equipes.obterNome_Equipe());
-        txtTelefone_Equipe.setText(Equipes.obterTelefone());
-
-        String data = Formatacao.ajustaDataDMA(Equipes.obterData_Criacao());
-        txtData_Criacao.setText(data);
+        try{
         
-        if (Equipes.obterData_Exclusao() == null){
-            txtSituacao.setText("ATIVO");
-        } else {
-            txtSituacao.setText("EXCLUÍDO");
+            pnlManutencao.setEnabled(true);
+            txtId_Equipe.setText(Integer.toString(Equipes.obterId_Equipe()));
+            txtNome_Equipe.setText(Equipes.obterNome_Equipe());
+            txtTelefone_Equipe.setText(Equipes.obterTelefone());
+
+            //String data = Formatacao.ajustaDataDMA(Equipes.obterData_Criacao());
+            txtData_Criacao.setText(Equipes.obterData_Criacao());
+
+            if (Equipes.obterData_Exclusao() == null){
+                txtSituacao.setText("ATIVO");
+            } else {
+                txtSituacao.setText("EXCLUÍDO");
+            }
+        
+        }catch(Exception ex){
+            
         }
     }
 
@@ -740,6 +746,8 @@ public class Tela_Equipes extends javax.swing.JFrame {
         txtId_Equipe.setText("");
         txtNome_Equipe.setText("");
         txtTelefone_Equipe.setText("");
+        txtBairro_Equipe.setText("");
+        txtEndereco_Equipe.setText("");
         Date data = new Date();
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy hh:mm");
         formatador.format(data);

@@ -138,7 +138,7 @@ public class Controla_Avaliacoes_Equipe {
             SQL += " WHERE A.Data_Exclusao is null ";
             SQL += " AND A.id_Avaliacao = " + id_avaliacao;
             SQL += " AND A.Id_Equipe = E.Id_Equipe";
-            SQL += " ORDER BY A.pontuacao, A.peso_ponte, E.nome_equipe, aprovado DESC ";
+            SQL += " ORDER BY A.pontuacao DESC, A.peso_ponte, E.nome_equipe, aprovado DESC ";
             
             //SQL += " AND A.aprovado = 1";
             
@@ -265,11 +265,11 @@ public class Controla_Avaliacoes_Equipe {
          ResultSet rs = null;
 
          String SQL = "";
-         SQL = "SELECT Quantidade = COUNT(*) ";
+         SQL = "SELECT COUNT(*) as Quant ";
          SQL += " FROM c_avaliacoes_equipe ";
          SQL += " WHERE Id_Avaliacao = " + objAvaliacao_Equipe.obterId_Avaliacao();
          SQL += " AND pontuacao >= " + pPontuacao;
-         SQL += " AND peso_Ponte <= " + pPeso_Ponte;
+         //SQL += " AND peso_Ponte <= " + pPeso_Ponte;
          SQL += " AND aprovado = 1";
          SQL += " ORDER BY pontuacao, peso_ponte ";
          //stm.executeQuery(SQL);
@@ -280,14 +280,14 @@ public class Controla_Avaliacoes_Equipe {
 
           try
             {
-            while (rs.next())
-            {
-                int wPos = rs.getInt(1) + 1;
-                return (wPos);
+                while (rs.next())
+                {
+                    int wPos = rs.getInt(1) + 1;
+                    return (wPos);
+                    }
+                if (objAvaliacao_Equipe.obterId_Avaliacao() == 0){
+                  return (0);
                 }
-            if (objAvaliacao_Equipe.obterId_Avaliacao() == 0){
-              return (0);
-            }
             }
 
             catch (SQLException ex )
