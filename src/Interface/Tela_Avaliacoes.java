@@ -16,6 +16,7 @@ import Controle.Controla_Equipes;
 import Ferramentas.CaixaDeDialogo;
 import Ferramentas.Cronometro;
 import Ferramentas.DLLInterface;
+import Ferramentas.Entrada;
 import Ferramentas.Formatacao;
 import Modelo.Avaliacoes;
 import Modelo.Avaliacoes_Equipe;
@@ -103,7 +104,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         btFechar = new javax.swing.JButton();
         btNovo = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
-        txtPesoMaximo = new javax.swing.JTextField();
+        txtPesoMaximoSimulado = new javax.swing.JTextField();
         lblPorta = new javax.swing.JLabel();
         txtPorta = new javax.swing.JTextField();
         cbSimulado = new javax.swing.JCheckBox();
@@ -144,7 +145,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         lblPesoSuportado = new javax.swing.JLabel();
         lblTimer1 = new javax.swing.JLabel();
         lblAprovado = new javax.swing.JLabel();
-        btExcluir1 = new javax.swing.JButton();
+        btProblema = new javax.swing.JButton();
         btAdicionarEquipe = new javax.swing.JButton();
         btExcluirEquipe = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
@@ -210,7 +211,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
             }
         });
 
-        txtPesoMaximo.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtPesoMaximoSimulado.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         lblPorta.setText("PORTA");
 
@@ -246,7 +247,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, Short.MAX_VALUE)
                 .addComponent(lblKG)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPesoMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPesoMaximoSimulado, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblPorta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -263,7 +264,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
                     .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btFechar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPesoMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPesoMaximoSimulado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbSimulado)
                     .addComponent(lblPorta, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPorta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -483,7 +484,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         lblPesoSuportado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPesoSuportado.setText("0");
         lblPesoSuportado.setOpaque(true);
-        jPanel6.add(lblPesoSuportado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 110, 40));
+        jPanel6.add(lblPesoSuportado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 160, 40));
 
         lblTimer1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTimer1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -494,17 +495,17 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         lblAprovado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblAprovado.setForeground(new java.awt.Color(0, 204, 0));
         lblAprovado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel6.add(lblAprovado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 110, 20));
+        jPanel6.add(lblAprovado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 150, 20));
 
-        btExcluir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Exclui.png"))); // NOI18N
-        btExcluir1.setText("Problema");
-        btExcluir1.setPreferredSize(new java.awt.Dimension(77, 25));
-        btExcluir1.addActionListener(new java.awt.event.ActionListener() {
+        btProblema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Exclui.png"))); // NOI18N
+        btProblema.setText("Problema");
+        btProblema.setPreferredSize(new java.awt.Dimension(77, 25));
+        btProblema.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btExcluir1ActionPerformed(evt);
+                btProblemaActionPerformed(evt);
             }
         });
-        jPanel6.add(btExcluir1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 100, -1));
+        jPanel6.add(btProblema, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 130, -1));
 
         btAdicionarEquipe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Confirma.png"))); // NOI18N
         btAdicionarEquipe.setText("Adicionar");
@@ -518,14 +519,14 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         jPanel6.add(btAdicionarEquipe, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 100, -1));
 
         btExcluirEquipe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Exclui.png"))); // NOI18N
-        btExcluirEquipe.setText("Excluir");
+        btExcluirEquipe.setText("Equipe");
         btExcluirEquipe.setPreferredSize(new java.awt.Dimension(77, 25));
         btExcluirEquipe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btExcluirEquipeActionPerformed(evt);
             }
         });
-        jPanel6.add(btExcluirEquipe, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 94, -1));
+        jPanel6.add(btExcluirEquipe, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 120, -1));
 
         jpManutencao.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 400, 140));
 
@@ -603,7 +604,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         int wControle = 0;
         String xMensagemValidacao = "";
 
-        xMensagemValidacao = ValidaDados();
+        xMensagemValidacao = ValidaDados("");
         if (xMensagemValidacao.equals("")) {
             System.out.println("Validou Dados");
 
@@ -664,15 +665,15 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_dtgAvaliacoesMousePressed
 
-    private void AdicionarEquipe() {
+    private void AdicionarEquipe(boolean pAprovado, String pProblema) {
         try {
             int wControle = 0;
             String xMensagemValidacao = "";
 
-            xMensagemValidacao = ValidaDados();
+            xMensagemValidacao = ValidaDados(pProblema);
             if (xMensagemValidacao.equals("")) {
                 System.out.println("Validou Dados");
-                GuardaDadosAvaliacaoEquipe(true, "");
+                GuardaDadosAvaliacaoEquipe(pAprovado, pProblema);
                 System.out.println("Guardou Dados");
 
                 wControle = ctlAvaliacoes_Equipe.gravarAvaliacao_Equipe();
@@ -806,7 +807,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
                 }
                 txtId_Prova.setText(Integer.toString(avaliacao_Equipe.obterId_Avaliacao()));
                 txtNome_Equipe.setText(avaliacao_Equipe.obterNome_Equipe());
-                txtPesoMaximo.setText(Double.toString(avaliacao_Equipe.obterPeso_Ponte()));
+                txtPesoMaximoSimulado.setText(Double.toString(avaliacao_Equipe.obterPeso_Ponte()));
             }
         }
     }//GEN-LAST:event_dtgResultadosMousePressed
@@ -823,7 +824,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
 
             } else {
                 Random random = new Random();
-                wPeso = random.nextInt(Integer.parseInt(txtPesoMaximo.getText()));
+                wPeso = random.nextInt(Integer.parseInt(txtPesoMaximoSimulado.getText()));
 
             }
 
@@ -870,9 +871,21 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btIniciaTimerActionPerformed
 
-    private void btExcluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluir1ActionPerformed
-
-    }//GEN-LAST:event_btExcluir1ActionPerformed
+    private void btProblemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProblemaActionPerformed
+        try{
+            String wProblema = "";
+            while(wProblema.trim().equals("")){
+                wProblema = Entrada.leiaString("Informe o Problema Ocorrido");
+            }
+                    
+            if (! wProblema.trim().equals("")){
+                AdicionarEquipe(false, wProblema);
+                AtualizaAvaliacoesEquipes(); 
+            }
+        }catch(Exception ex){
+           CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage().toString()); 
+        }
+    }//GEN-LAST:event_btProblemaActionPerformed
 
     private void btPesquisarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarEquipeActionPerformed
         Tela_Equipes objEquipes;
@@ -884,13 +897,9 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
     }//GEN-LAST:event_btPesquisarEquipeActionPerformed
 
     private void btAdicionarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarEquipeActionPerformed
-        AdicionarEquipe();
+        AdicionarEquipe(true, "");
         AtualizaAvaliacoesEquipes();
     }//GEN-LAST:event_btAdicionarEquipeActionPerformed
-
-    private void btExcluirEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirEquipeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btExcluirEquipeActionPerformed
 
     private void cbSimuladoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbSimuladoItemStateChanged
         // TODO add your handling code here:
@@ -898,14 +907,18 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
             lblPorta.setVisible(false);
             txtPorta.setVisible(false);
             lblKG.setVisible(true);
-            txtPesoMaximo.setVisible(true);
+            txtPesoMaximoSimulado.setVisible(true);
         } else {
             lblPorta.setVisible(true);
             txtPorta.setVisible(true);
             lblKG.setVisible(false);
-            txtPesoMaximo.setVisible(false);
+            txtPesoMaximoSimulado.setVisible(false);
         }
     }//GEN-LAST:event_cbSimuladoItemStateChanged
+
+    private void btExcluirEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirEquipeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btExcluirEquipeActionPerformed
 
     public static void RecebeEquipe(String Cod_Equipe, String Nome_Equipe, String Lider_Equipe) {
         txtId_Equipe.setText(Cod_Equipe);
@@ -971,15 +984,17 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
 
     }
 
-    private String ValidaDados() {
+    private String ValidaDados(String pProblema) {
         String xMensagem = "";
 
         if (txtNome_Equipe.getText().equals("")) {
             xMensagem += "Nome Equipe deve ser preenchido! \n";
         }
 
-        if (txtPesoMaximo.getText().equals("")) {
-            xMensagem += "Peso da Ponte em Kg deve ser preenchido! \n";
+        if (pProblema.equals("")){
+            if (txtPesoMaximoSimulado.getText().equals("")) {
+                xMensagem += "Peso da Ponte em Kg deve ser preenchido! \n";
+            }   
         }
 
         return xMensagem;
@@ -1004,7 +1019,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         if (pAprovado == true) {
             avaliacao_Equipe.definirId_Equipe(Integer.parseInt(txtId_Equipe.getText()));
             avaliacao_Equipe.definirId_Avaliacao(Integer.parseInt(txtId_Prova.getText()));
-            avaliacao_Equipe.definirPeso_Ponte(Double.parseDouble(txtPesoMaximo.getText()));
+            avaliacao_Equipe.definirPeso_Ponte(Double.parseDouble(txtPeso_Ponte.getText()));
             avaliacao_Equipe.definirPontuacao(Double.parseDouble(lblPesoSuportado.getText()));
             avaliacao_Equipe.definirProblema("");
 
@@ -1020,8 +1035,8 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         } else {
             avaliacao_Equipe.definirId_Equipe(Integer.parseInt(txtId_Equipe.getText()));
             avaliacao_Equipe.definirId_Avaliacao(Integer.parseInt(txtId_Prova.getText()));
-            avaliacao_Equipe.definirPeso_Ponte(Double.parseDouble(txtPesoMaximo.getText()));
-            avaliacao_Equipe.definirPontuacao(Double.parseDouble(lblPesoSuportado.getText()));
+            avaliacao_Equipe.definirPeso_Ponte(Double.parseDouble(txtPeso_Ponte.getText()));
+            avaliacao_Equipe.definirPontuacao(0);
             avaliacao_Equipe.definirProblema(pProblema);
 
             //if (lblAprovado.getText().equals("PESO APROVADO")){
@@ -1054,7 +1069,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         txtId_Prova.setText("");
         txtId_Equipe.setText("");
         txtNome_Equipe.setText("");
-        txtPesoMaximo.setText("");
+        txtPesoMaximoSimulado.setText("");
         Date data = new Date();
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy hh:mm");
         formatador.format(data);
@@ -1067,12 +1082,12 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
             lblPorta.setVisible(false);
             txtPorta.setVisible(false);
             lblKG.setVisible(true);
-            txtPesoMaximo.setVisible(true);
+            txtPesoMaximoSimulado.setVisible(true);
         } else {
             lblPorta.setVisible(true);
             txtPorta.setVisible(true);
             lblKG.setVisible(false);
-            txtPesoMaximo.setVisible(false);
+            txtPesoMaximoSimulado.setVisible(false);
         }
 
         if (LimpaTudo == true) {
@@ -1115,7 +1130,6 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
     private javax.swing.JButton btAdicionarEquipe;
     private javax.swing.JButton btAlterar;
     private javax.swing.JButton btExcluir;
-    private javax.swing.JButton btExcluir1;
     private javax.swing.JButton btExcluirEquipe;
     private javax.swing.JButton btFechar;
     private javax.swing.JButton btIniciaTimer;
@@ -1123,6 +1137,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
     private javax.swing.JButton btNovo;
     private javax.swing.JButton btPesquisar;
     private javax.swing.JButton btPesquisarEquipe;
+    private javax.swing.JButton btProblema;
     private javax.swing.ButtonGroup buttonGroup1;
     private static javax.swing.JComboBox cbPesquisarPor;
     private javax.swing.JCheckBox cbSimulado;
@@ -1165,7 +1180,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
     private javax.swing.JTextField txtId_Prova;
     private static javax.swing.JTextField txtLider_Equipe;
     private static javax.swing.JTextField txtNome_Equipe;
-    private javax.swing.JTextField txtPesoMaximo;
+    private javax.swing.JTextField txtPesoMaximoSimulado;
     private javax.swing.JTextField txtPeso_Ponte;
     private javax.swing.JTextField txtPorta;
     // End of variables declaration//GEN-END:variables
