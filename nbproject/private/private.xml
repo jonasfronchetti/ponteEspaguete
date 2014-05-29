@@ -2,6 +2,17 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group/>
+=======
+        <group>
+            <file>file:/C:/Users/W7/Documents/GitHub/ponteEspaguete/src/Interface/Tela_Avaliacoes.java</file>
+            <file>file:/C:/Users/W7/Documents/GitHub/ponteEspaguete/src/Interface/Tela_Login.java</file>
+            <file>file:/C:/Users/W7/Documents/GitHub/ponteEspaguete/src/Interface/Tela_Equipes.java</file>
+            <file>file:/C:/Users/W7/Documents/GitHub/ponteEspaguete/src/Interface/Tela_Usuarios.java</file>
+            <file>file:/C:/Users/W7/Documents/GitHub/ponteEspaguete/src/Ferramentas/Cronometro.java</file>
+            <file>file:/C:/Users/W7/Documents/GitHub/ponteEspaguete/src/Modelo/CriaTabelaBanco.java</file>
+        </group>
+>>>>>>> d7286dcc6393048081f3cc6ff520de6cfac3e334
     </open-files>
 </project-private>
