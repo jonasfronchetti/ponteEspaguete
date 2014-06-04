@@ -330,37 +330,70 @@ public class Tela_Equipes extends javax.swing.JFrame {
         pnlManutencao.setEnabled(false);
 
         jpManutencao.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jpManutencao.setLayout(null);
 
         txtId_Equipe.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtId_Equipe.setEnabled(false);
+        jpManutencao.add(txtId_Equipe);
+        txtId_Equipe.setBounds(190, 30, 60, 20);
 
-        jLabel4.setText("Nome da Equipe");
+        jLabel4.setText("Nome");
+        jpManutencao.add(jLabel4);
+        jLabel4.setBounds(80, 60, 80, 20);
 
         jLabel3.setText("Telefone");
+        jpManutencao.add(jLabel3);
+        jLabel3.setBounds(80, 150, 80, 20);
 
         jLabel2.setText("Id Cliente");
+        jpManutencao.add(jLabel2);
+        jLabel2.setBounds(80, 30, 80, 20);
 
         txtNome_Equipe.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jpManutencao.add(txtNome_Equipe);
+        txtNome_Equipe.setBounds(190, 60, 210, 20);
+        jpManutencao.add(txtTelefone_Equipe);
+        txtTelefone_Equipe.setBounds(190, 150, 102, 20);
 
         jLabel5.setText("Data de Criação");
+        jpManutencao.add(jLabel5);
+        jLabel5.setBounds(80, 312, 100, 20);
 
         txtData_Criacao.setEditable(false);
+        jpManutencao.add(txtData_Criacao);
+        txtData_Criacao.setBounds(190, 310, 102, 20);
 
         jLabel6.setText("Usuário Criação");
+        jpManutencao.add(jLabel6);
+        jLabel6.setBounds(80, 338, 100, 20);
 
         txtUsuario_Criacao.setEditable(false);
+        jpManutencao.add(txtUsuario_Criacao);
+        txtUsuario_Criacao.setBounds(190, 340, 102, 20);
 
         jLabel7.setText("Situação");
+        jpManutencao.add(jLabel7);
+        jLabel7.setBounds(80, 180, 80, 20);
 
         txtSituacao.setEditable(false);
+        jpManutencao.add(txtSituacao);
+        txtSituacao.setBounds(190, 180, 102, 20);
 
         jLabel9.setText("Integrantes");
+        jpManutencao.add(jLabel9);
+        jLabel9.setBounds(80, 90, 80, 20);
 
         txtEndereco_Equipe.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jpManutencao.add(txtEndereco_Equipe);
+        txtEndereco_Equipe.setBounds(190, 90, 210, 20);
 
         jLabel10.setText("Líder");
+        jpManutencao.add(jLabel10);
+        jLabel10.setBounds(80, 120, 80, 20);
 
         txtBairro_Equipe.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jpManutencao.add(txtBairro_Equipe);
+        txtBairro_Equipe.setBounds(190, 120, 210, 20);
 
         btConfirmar.setText("Confirma");
         btConfirmar.setEnabled(false);
@@ -370,6 +403,8 @@ public class Tela_Equipes extends javax.swing.JFrame {
                 btConfirmarActionPerformed(evt);
             }
         });
+        jpManutencao.add(btConfirmar);
+        btConfirmar.setBounds(444, 338, 90, 20);
 
         btCancela.setText("Cancela");
         btCancela.setEnabled(false);
@@ -379,94 +414,11 @@ public class Tela_Equipes extends javax.swing.JFrame {
                 btCancelaActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jpManutencaoLayout = new javax.swing.GroupLayout(jpManutencao);
-        jpManutencao.setLayout(jpManutencaoLayout);
-        jpManutencaoLayout.setHorizontalGroup(
-            jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpManutencaoLayout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpManutencaoLayout.createSequentialGroup()
-                        .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpManutencaoLayout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtId_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jpManutencaoLayout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNome_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(22, 275, Short.MAX_VALUE))
-                    .addGroup(jpManutencaoLayout.createSequentialGroup()
-                        .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jpManutencaoLayout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtEndereco_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jpManutencaoLayout.createSequentialGroup()
-                                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtTelefone_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtBairro_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtData_Criacao, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtUsuario_Criacao, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btCancela, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19))))
-        );
-        jpManutencaoLayout.setVerticalGroup(
-            jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpManutencaoLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtId_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNome_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEndereco_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBairro_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTelefone_Equipe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
-                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtData_Criacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jpManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtUsuario_Criacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btCancela, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
+        jpManutencao.add(btCancela);
+        btCancela.setBounds(540, 338, 90, 20);
 
         pnlManutencao.add(jpManutencao);
-        jpManutencao.setBounds(0, 0, 650, 370);
+        jpManutencao.setBounds(0, 0, 640, 370);
 
         tbpEquipes.addTab("Manutenção", pnlManutencao);
 
@@ -556,8 +508,8 @@ public class Tela_Equipes extends javax.swing.JFrame {
             txtNome_Equipe.requestFocus();
             btAlterar.setVisible(true);
             btExcluir.setVisible(true);
-            btNovo.setVisible(true);
-            btAdicionar.setVisible(false);
+            btNovo.setVisible(false);
+            btAdicionar.setVisible(true);
 
             ctlEquipe = new Controla_Equipes(Equipes, dtgEquipes);
 
@@ -567,7 +519,7 @@ public class Tela_Equipes extends javax.swing.JFrame {
                 CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao buscar Equipe no BD!");
                 } else {
                 if (wControle == 0)
-                TelaAlteracao();
+                    TelaAlteracao();
                 }
      }
     }//GEN-LAST:event_dtgEquipesMousePressed

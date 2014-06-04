@@ -346,27 +346,29 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(10, 10, 10)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(10, 10, 10)
                         .addComponent(cbPesquisarPor, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(33, 33, 33)
                         .addComponent(btPesquisar))
-                    .addComponent(txtCampoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtCampoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(cbPesquisarPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel8))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(cbPesquisarPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btPesquisar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCampoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
+                .addComponent(txtCampoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pnlConsulta.add(jPanel3);
@@ -450,7 +452,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
 
         jLabel6.setText("Peso da Ponte (Kg)");
         jPanel5.add(jLabel6);
-        jLabel6.setBounds(220, 80, 100, 20);
+        jLabel6.setBounds(220, 80, 110, 20);
 
         txtLider_Equipe.setEditable(false);
         txtLider_Equipe.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -463,7 +465,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
 
         txtPeso_Ponte.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jPanel5.add(txtPeso_Ponte);
-        txtPeso_Ponte.setBounds(330, 80, 59, 20);
+        txtPeso_Ponte.setBounds(340, 80, 50, 20);
 
         jpManutencao.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 400, 110));
 
@@ -505,7 +507,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
                 btProblemaActionPerformed(evt);
             }
         });
-        jPanel6.add(btProblema, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 130, -1));
+        jPanel6.add(btProblema, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 120, -1));
 
         btAdicionarEquipe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Confirma.png"))); // NOI18N
         btAdicionarEquipe.setText("Adicionar");
@@ -516,7 +518,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
                 btAdicionarEquipeActionPerformed(evt);
             }
         });
-        jPanel6.add(btAdicionarEquipe, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 100, -1));
+        jPanel6.add(btAdicionarEquipe, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 140, -1));
 
         btExcluirEquipe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Exclui.png"))); // NOI18N
         btExcluirEquipe.setText("Equipe");
@@ -526,7 +528,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
                 btExcluirEquipeActionPerformed(evt);
             }
         });
-        jPanel6.add(btExcluirEquipe, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 120, -1));
+        jPanel6.add(btExcluirEquipe, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 100, -1));
 
         jpManutencao.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 400, 140));
 
@@ -861,6 +863,9 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
     }
     private void btIniciaTimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIniciaTimerActionPerformed
         if (cbSimulado.isSelected() == true) {
+            if (txtPeso_Ponte.getText().equals("")){
+                CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o peso da ponte de espaguete da Equipe!");
+            }
             Cronometro crono = new Cronometro(lblTimer1, 10, this, btIniciaTimer);
             crono.start();
         } else if (!txtPorta.getText().equals("")) {
@@ -1056,6 +1061,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         txtData_Criacao.setText(avaliacoes.obterData_Avaliacao());
         btAdicionarEquipe.setVisible(true);
         btExcluir.setVisible(true);
+        btNovo.setVisible(false);
         //String data = Formatacao.ajustaDataDMA(Equipes.obterData_Criacao());
         //txtData_Criacao.setText(data);
 
