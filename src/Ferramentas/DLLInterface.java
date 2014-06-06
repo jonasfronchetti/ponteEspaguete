@@ -15,11 +15,11 @@ import com.sun.jna.Native;
 
 public interface DLLInterface extends Library{ 
 
-public DLLInterface BalancaLider = (DLLInterface)Native.loadLibrary("BalancaLider.dll", DLLInterface.class);
+public static DLLInterface BalancaLider = (DLLInterface)Native.loadLibrary("BalancaLider.dll", DLLInterface.class);
         
-public double CapturarPeso(int Porta, int Velocidade);  
+double CapturarPeso(int Porta, int Velocidade);  
 
-public double Zerar(int Porta, int Velocidade);  
+double Zerar(int Porta, int Velocidade);  
               
 }
 

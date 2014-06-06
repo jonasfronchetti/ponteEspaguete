@@ -21,10 +21,15 @@ import Ferramentas.Formatacao;
 import Modelo.Avaliacoes;
 import Modelo.Avaliacoes_Equipe;
 import java.awt.EventQueue;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.Statement;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 import javax.swing.ButtonGroup;
 import javax.swing.JFormattedTextField;
@@ -36,7 +41,7 @@ import javax.swing.JFormattedTextField;
 public class Tela_Avaliacoes extends javax.swing.JFrame {
 
     Menu objMenu;
-    DLLInterface DLLInterface;
+    DLLInterface dllInterface;
     public static Connection con;
     public static Statement stmt;
     public boolean vSelecao = true;
@@ -44,7 +49,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
     Controla_Equipes ctlEquipe;
     Equipes Equipes = new Equipes();
     double wPesoValidado;
-
+    
     Controla_Avaliacoes ctlAvaliacoes;
     Avaliacoes avaliacoes = new Avaliacoes();
 
@@ -222,6 +227,11 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         cbSimulado.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbSimuladoItemStateChanged(evt);
+            }
+        });
+        cbSimulado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbSimuladoActionPerformed(evt);
             }
         });
 
@@ -456,6 +466,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
 
         txtLider_Equipe.setEditable(false);
         txtLider_Equipe.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtLider_Equipe.setText("Rodrigo M.");
         jPanel5.add(txtLider_Equipe);
         txtLider_Equipe.setBounds(50, 80, 162, 20);
 
@@ -497,6 +508,18 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         lblAprovado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblAprovado.setForeground(new java.awt.Color(0, 204, 0));
         lblAprovado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAprovado.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                lblAprovadoFocusGained(evt);
+            }
+        });
+        lblAprovado.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                lblAprovadoInputMethodTextChanged(evt);
+            }
+        });
         jPanel6.add(lblAprovado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 150, 20));
 
         btProblema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Exclui.png"))); // NOI18N
@@ -535,19 +558,19 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Próximas Equipes"));
         jPanel7.setLayout(null);
 
-        lblLista1.setText("1 - Equipe Alfa");
+        lblLista1.setText("1 - Equipe UNIVATES");
         jPanel7.add(lblLista1);
         lblLista1.setBounds(10, 20, 140, 20);
 
-        lblLista2.setText("2 - Equipe Delta");
+        lblLista2.setText("2 - Equipe MASSAFORTE");
         jPanel7.add(lblLista2);
         lblLista2.setBounds(10, 40, 140, 20);
 
-        lblLista4.setText("4 - Equipe Nova");
+        lblLista4.setText("4 - Equipe PONTE FORTE");
         jPanel7.add(lblLista4);
         lblLista4.setBounds(170, 40, 140, 20);
 
-        lblLista3.setText("3 - Equipe Charli");
+        lblLista3.setText("Equipe INOVA");
         jPanel7.add(lblLista3);
         lblLista3.setBounds(170, 20, 140, 20);
 
@@ -822,8 +845,10 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
 
             if (cbSimulado.isSelected() == false) {
                 int wPorta = Integer.parseInt(txtPorta.getText());
-                wPeso = DLLInterface.BalancaLider.CapturarPeso(wPorta, 9600);
-
+                wPeso = dllInterface.BalancaLider.CapturarPeso(wPorta, 9600);
+                //BigDecimal valorExato = new BigDecimal(wPeso)  
+                // .setScale(2, RoundingMode.HALF_DOWN);  
+                //double teste = dllInterface.BalancaLider.Zerar(wPorta, 9600);
             } else {
                 Random random = new Random();
                 wPeso = random.nextInt(Integer.parseInt(txtPesoMaximoSimulado.getText()));
@@ -833,6 +858,8 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
             if (wPeso >= Double.parseDouble(lblPesoSuportado.getText())) {
                 lblPesoSuportado.setOpaque(false);
                 lblPesoSuportado.setText(wPeso + "");
+                //lblPesoSuportado.setText("%.2f",wPeso);
+                //lblPesoSuportado.setText(wPeso);
                 lblAprovado.setText("PESO APROVADO!");
 
                 wControle = ctlAvaliacoes_Equipe.buscarPosicaoAvaliacao_Equipe(Double.parseDouble(lblPesoSuportado.getText()), Double.parseDouble(txtPeso_Ponte.getText()));
@@ -851,7 +878,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
             }
 
             if (cbSimulado.isSelected() == false) {
-                wPeso = DLLInterface.BalancaLider.Zerar(Integer.parseInt(txtPorta.getText()), 9600);
+                //wPeso = dllInterface.BalancaLider.Zerar(Integer.parseInt(txtPorta.getText()), 9600);
                 //wControle2 = Integer.parseInt(DLLInterface.BalancaLider.CapturarPeso(4, 9600) + "");
                 //wControle = DLLInterface.BalancaLider.CapturarPeso(Integer.parseInt(txtPorta.getText()), Integer.parseInt(txtVelocidade.getText()));
             }
@@ -862,17 +889,30 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
 
     }
     private void btIniciaTimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIniciaTimerActionPerformed
+        try{
+            
         if (cbSimulado.isSelected() == true) {
             if (txtPeso_Ponte.getText().equals("")){
                 CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o peso da ponte de espaguete da Equipe!");
             }
             Cronometro crono = new Cronometro(lblTimer1, 10, this, btIniciaTimer);
             crono.start();
+            
+            
         } else if (!txtPorta.getText().equals("")) {
             Cronometro crono = new Cronometro(lblTimer1, 10, this, btIniciaTimer);
             crono.start();
+            
+            //crono.join();
+            while (! crono.wEspera){
+                this.repaint();
+            }
+            capturaPeso();
         } else {
             CaixaDeDialogo.obterinstancia().exibirMensagem("Informe a Porta de Comunicação da Balança!");
+        }
+        
+        }catch(Exception e){
         }
     }//GEN-LAST:event_btIniciaTimerActionPerformed
 
@@ -925,10 +965,22 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btExcluirEquipeActionPerformed
 
+    private void lblAprovadoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lblAprovadoFocusGained
+        capturaPeso();
+    }//GEN-LAST:event_lblAprovadoFocusGained
+
+    private void lblAprovadoInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_lblAprovadoInputMethodTextChanged
+  
+    }//GEN-LAST:event_lblAprovadoInputMethodTextChanged
+
+    private void cbSimuladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSimuladoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbSimuladoActionPerformed
+
     public static void RecebeEquipe(String Cod_Equipe, String Nome_Equipe, String Lider_Equipe) {
         txtId_Equipe.setText(Cod_Equipe);
         txtNome_Equipe.setText(Nome_Equipe);
-        txtLider_Equipe.setText(Lider_Equipe);
+        //txtLider_Equipe.setText(Lider_Equipe);
         //txtTelefone_Cliente.setText(Participantes_Equipe);
     }
 
@@ -1165,7 +1217,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel jpManutencao;
-    private javax.swing.JLabel lblAprovado;
+    public javax.swing.JLabel lblAprovado;
     private javax.swing.JLabel lblKG;
     private javax.swing.JLabel lblLista1;
     private javax.swing.JLabel lblLista2;

@@ -6,6 +6,7 @@
 package Ferramentas;
 
 import Interface.Tela_Avaliacoes;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -16,6 +17,7 @@ import javax.swing.JLabel;
  * @author W7
  */
 public class Cronometro extends Thread {
+    public boolean wEspera;
     private JLabel label;
     private int tempo;
     private Tela_Avaliacoes tAvalia;
@@ -25,6 +27,7 @@ public class Cronometro extends Thread {
         this.tempo = tempo;
         this.tAvalia = tAvalia;
         this.botao = botao;
+        wEspera = false;
     }
 
     public void run() {
@@ -33,6 +36,7 @@ public class Cronometro extends Thread {
             label.setText(tempo+"");
             try {
                 Thread.sleep(1000);
+                //tAvalia.repaint();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Cronometro.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -40,7 +44,8 @@ public class Cronometro extends Thread {
         }
         label.setText(tempo+"");
         botao.setEnabled(true);
-        tAvalia.capturaPeso();
+        wEspera = true;
+        tAvalia.lblAprovado.requestFocus();
     }
-
+    
 }
