@@ -20,6 +20,7 @@ import Ferramentas.Entrada;
 import Ferramentas.Formatacao;
 import Modelo.Avaliacoes;
 import Modelo.Avaliacoes_Equipe;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -114,6 +115,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         txtPorta = new javax.swing.JTextField();
         cbSimulado = new javax.swing.JCheckBox();
         lblKG = new javax.swing.JLabel();
+        cbBalanca = new javax.swing.JCheckBox();
         tbpAvaliacoes = new javax.swing.JTabbedPane();
         pnlConsulta = new javax.swing.JLayeredPane();
         jPanel2 = new javax.swing.JPanel();
@@ -147,12 +149,13 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         txtPeso_Ponte = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         btIniciaTimer = new javax.swing.JButton();
-        lblPesoSuportado = new javax.swing.JLabel();
         lblTimer1 = new javax.swing.JLabel();
         lblAprovado = new javax.swing.JLabel();
         btProblema = new javax.swing.JButton();
-        btAdicionarEquipe = new javax.swing.JButton();
         btExcluirEquipe = new javax.swing.JButton();
+        txtPeso = new javax.swing.JTextField();
+        btAdicionarEquipe = new javax.swing.JButton();
+        lblStatus = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         lblLista1 = new javax.swing.JLabel();
         lblLista2 = new javax.swing.JLabel();
@@ -237,6 +240,19 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
 
         lblKG.setText("KG");
 
+        cbBalanca.setSelected(true);
+        cbBalanca.setText("B");
+        cbBalanca.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbBalancaItemStateChanged(evt);
+            }
+        });
+        cbBalanca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbBalancaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -254,7 +270,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
                 .addComponent(btFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbSimulado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblKG)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPesoMaximoSimulado, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -262,7 +278,9 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
                 .addComponent(lblPorta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPorta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbBalanca)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,7 +296,8 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
                     .addComponent(cbSimulado)
                     .addComponent(lblPorta, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPorta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblKG))
+                    .addComponent(lblKG)
+                    .addComponent(cbBalanca))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -466,7 +485,6 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
 
         txtLider_Equipe.setEditable(false);
         txtLider_Equipe.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtLider_Equipe.setText("Rodrigo M.");
         jPanel5.add(txtLider_Equipe);
         txtLider_Equipe.setBounds(50, 80, 162, 20);
 
@@ -493,19 +511,13 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         });
         jPanel6.add(btIniciaTimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 120, 45));
 
-        lblPesoSuportado.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblPesoSuportado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPesoSuportado.setText("0");
-        lblPesoSuportado.setOpaque(true);
-        jPanel6.add(lblPesoSuportado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 160, 40));
-
         lblTimer1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTimer1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTimer1.setText("10");
         lblTimer1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel6.add(lblTimer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 60, 40));
 
-        lblAprovado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblAprovado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblAprovado.setForeground(new java.awt.Color(0, 204, 0));
         lblAprovado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAprovado.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -520,7 +532,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
                 lblAprovadoInputMethodTextChanged(evt);
             }
         });
-        jPanel6.add(lblAprovado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 150, 20));
+        jPanel6.add(lblAprovado, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 230, 50));
 
         btProblema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Exclui.png"))); // NOI18N
         btProblema.setText("Problema");
@@ -530,7 +542,21 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
                 btProblemaActionPerformed(evt);
             }
         });
-        jPanel6.add(btProblema, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 120, -1));
+        jPanel6.add(btProblema, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 120, -1));
+
+        btExcluirEquipe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Exclui.png"))); // NOI18N
+        btExcluirEquipe.setText("Equipe");
+        btExcluirEquipe.setPreferredSize(new java.awt.Dimension(77, 25));
+        btExcluirEquipe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirEquipeActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btExcluirEquipe, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 100, -1));
+
+        txtPeso.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txtPeso.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel6.add(txtPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 150, 40));
 
         btAdicionarEquipe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Confirma.png"))); // NOI18N
         btAdicionarEquipe.setText("Adicionar");
@@ -541,19 +567,12 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
                 btAdicionarEquipeActionPerformed(evt);
             }
         });
-        jPanel6.add(btAdicionarEquipe, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 140, -1));
+        jPanel6.add(btAdicionarEquipe, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 140, -1));
 
-        btExcluirEquipe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Exclui.png"))); // NOI18N
-        btExcluirEquipe.setText("Equipe");
-        btExcluirEquipe.setPreferredSize(new java.awt.Dimension(77, 25));
-        btExcluirEquipe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btExcluirEquipeActionPerformed(evt);
-            }
-        });
-        jPanel6.add(btExcluirEquipe, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 100, -1));
+        lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/lampred.png"))); // NOI18N
+        jPanel6.add(lblStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
 
-        jpManutencao.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 400, 140));
+        jpManutencao.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 400, 160));
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Próximas Equipes"));
         jPanel7.setLayout(null);
@@ -579,7 +598,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         lblPosicaoAtual.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblPosicaoAtual.setForeground(new java.awt.Color(51, 51, 255));
         lblPosicaoAtual.setText("PosiçãoAtual:");
-        jpManutencao.add(lblPosicaoAtual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 390, -1));
+        jpManutencao.add(lblPosicaoAtual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 390, -1));
 
         pnlManutencao.add(jpManutencao);
         jpManutencao.setBounds(0, 0, 770, 400);
@@ -841,6 +860,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         double wPeso;
         int wControle;
         try {
+            lblStatus.setVisible(false);
             lblAprovado.setText("");
 
             if (cbSimulado.isSelected() == false) {
@@ -855,26 +875,47 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
 
             }
 
-            if (wPeso >= Double.parseDouble(lblPesoSuportado.getText())) {
-                lblPesoSuportado.setOpaque(false);
-                lblPesoSuportado.setText(wPeso + "");
-                //lblPesoSuportado.setText("%.2f",wPeso);
-                //lblPesoSuportado.setText(wPeso);
-                lblAprovado.setText("PESO APROVADO!");
+            if (txtPeso.getText().equals("")){
+                txtPeso.setOpaque(false);
+                    txtPeso.setText(wPeso + "");
+                    //lblPesoSuportado.setText("%.2f",wPeso);
+                    //lblPesoSuportado.setText(wPeso);
+                    lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/lampgreen.png")));
+                    lblStatus.setVisible(true);
+                    lblAprovado.setText("PESO APROVADO!");
 
-                wControle = ctlAvaliacoes_Equipe.buscarPosicaoAvaliacao_Equipe(Double.parseDouble(lblPesoSuportado.getText()), Double.parseDouble(txtPeso_Ponte.getText()));
-                if (wControle != 0) {
-                    lblPosicaoAtual.setText("No momento a equipe ocupa a " + wControle + "ª posição!");
+                    wControle = ctlAvaliacoes_Equipe.buscarPosicaoAvaliacao_Equipe(Double.parseDouble(txtPeso.getText()), Double.parseDouble(txtPeso_Ponte.getText()));
+                    if (wControle != 0) {
+                        lblPosicaoAtual.setText("No momento a equipe ocupa a " + wControle + "ª posição!");
+                    }
+            }else{
+                if (wPeso >= Double.parseDouble(txtPeso.getText())) {
+                    txtPeso.setOpaque(false);
+                    txtPeso.setText(wPeso + "");
+                    //lblPesoSuportado.setText("%.2f",wPeso);
+                    //lblPesoSuportado.setText(wPeso);
+                    lblAprovado.setForeground(Color.GREEN);
+                    lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/lampgreen.png")));
+                    lblStatus.setVisible(true);
+                    lblAprovado.setText("PESO APROVADO!");
+
+                    wControle = ctlAvaliacoes_Equipe.buscarPosicaoAvaliacao_Equipe(Double.parseDouble(txtPeso.getText()), Double.parseDouble(txtPeso_Ponte.getText()));
+                    if (wControle != 0) {
+                        lblPosicaoAtual.setText("No momento a equipe ocupa a " + wControle + "ª posição!");
+                    }
+                } else {
+                    lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/lampred.png")));
+                    lblStatus.setVisible(true);
+                    lblAprovado.setForeground(Color.RED);
+                    lblAprovado.setText("PONTE QUEBRADA!");
+
+                    //salva o resultado
+                    GuardaDadosAvaliacaoEquipe(true, "");
+                    wControle = ctlAvaliacoes_Equipe.gravarAvaliacao_Equipe();
+
+                    AtualizaAvaliacoesEquipes();
+                    LimpaTela(false, true);
                 }
-            } else {
-                lblAprovado.setText("PONTE QUEBRADA!");
-
-                //salva o resultado
-                GuardaDadosAvaliacaoEquipe(true, "");
-                wControle = ctlAvaliacoes_Equipe.gravarAvaliacao_Equipe();
-
-                AtualizaAvaliacoesEquipes();
-                LimpaTela(false, true);
             }
 
             if (cbSimulado.isSelected() == false) {
@@ -890,7 +931,8 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
     }
     private void btIniciaTimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIniciaTimerActionPerformed
         try{
-            
+            lblStatus.setVisible(false);
+            lblAprovado.setText("");
         if (cbSimulado.isSelected() == true) {
             if (txtPeso_Ponte.getText().equals("")){
                 CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o peso da ponte de espaguete da Equipe!");
@@ -903,11 +945,13 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
             Cronometro crono = new Cronometro(lblTimer1, 10, this, btIniciaTimer);
             crono.start();
             
-            //crono.join();
+            /*crono.join();
             while (! crono.wEspera){
                 this.repaint();
             }
             capturaPeso();
+            */
+            
         } else {
             CaixaDeDialogo.obterinstancia().exibirMensagem("Informe a Porta de Comunicação da Balança!");
         }
@@ -941,11 +985,6 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         objEquipes.setVisible(true);
     }//GEN-LAST:event_btPesquisarEquipeActionPerformed
 
-    private void btAdicionarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarEquipeActionPerformed
-        AdicionarEquipe(true, "");
-        AtualizaAvaliacoesEquipes();
-    }//GEN-LAST:event_btAdicionarEquipeActionPerformed
-
     private void cbSimuladoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbSimuladoItemStateChanged
         // TODO add your handling code here:
         if (cbSimulado.isSelected()) {
@@ -966,7 +1005,11 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
     }//GEN-LAST:event_btExcluirEquipeActionPerformed
 
     private void lblAprovadoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lblAprovadoFocusGained
-        capturaPeso();
+        if (cbBalanca.isSelected()){
+            capturaPeso();
+        } else{
+            
+        }        
     }//GEN-LAST:event_lblAprovadoFocusGained
 
     private void lblAprovadoInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_lblAprovadoInputMethodTextChanged
@@ -976,6 +1019,23 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
     private void cbSimuladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSimuladoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbSimuladoActionPerformed
+
+    private void cbBalancaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbBalancaItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbBalancaItemStateChanged
+
+    private void cbBalancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBalancaActionPerformed
+        if (cbBalanca.isSelected()){
+            txtPeso.setEnabled(false);
+        }else{
+            txtPeso.setEnabled(true);
+        }
+    }//GEN-LAST:event_cbBalancaActionPerformed
+
+    private void btAdicionarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarEquipeActionPerformed
+        AdicionarEquipe(true, "");
+        AtualizaAvaliacoesEquipes();
+    }//GEN-LAST:event_btAdicionarEquipeActionPerformed
 
     public static void RecebeEquipe(String Cod_Equipe, String Nome_Equipe, String Lider_Equipe) {
         txtId_Equipe.setText(Cod_Equipe);
@@ -1049,7 +1109,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
         }
 
         if (pProblema.equals("")){
-            if (txtPesoMaximoSimulado.getText().equals("")) {
+            if (txtPeso_Ponte.getText().equals("")) {
                 xMensagem += "Peso da Ponte em Kg deve ser preenchido! \n";
             }   
         }
@@ -1077,7 +1137,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
             avaliacao_Equipe.definirId_Equipe(Integer.parseInt(txtId_Equipe.getText()));
             avaliacao_Equipe.definirId_Avaliacao(Integer.parseInt(txtId_Prova.getText()));
             avaliacao_Equipe.definirPeso_Ponte(Double.parseDouble(txtPeso_Ponte.getText()));
-            avaliacao_Equipe.definirPontuacao(Double.parseDouble(lblPesoSuportado.getText()));
+            avaliacao_Equipe.definirPontuacao(Double.parseDouble(txtPeso.getText()));
             avaliacao_Equipe.definirProblema("");
 
             Date data = new Date();
@@ -1123,6 +1183,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
 
     private void LimpaTela(boolean LimpaTudo, boolean NovoRegistro) {
 
+        //lblStatus.setVisible(false);
         txtCampoPesquisa.setText("");
         txtId_Prova.setText("");
         txtId_Equipe.setText("");
@@ -1146,6 +1207,14 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
             txtPorta.setVisible(true);
             lblKG.setVisible(false);
             txtPesoMaximoSimulado.setVisible(false);
+        }
+        
+        if (cbBalanca.isSelected()) {
+            txtPeso.setEnabled(false);
+            btAdicionarEquipe.setVisible(false);
+        } else {
+            txtPeso.setEnabled(true);
+            btAdicionarEquipe.setVisible(true);
         }
 
         if (LimpaTudo == true) {
@@ -1197,6 +1266,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
     private javax.swing.JButton btPesquisarEquipe;
     private javax.swing.JButton btProblema;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JCheckBox cbBalanca;
     private static javax.swing.JComboBox cbPesquisarPor;
     private javax.swing.JCheckBox cbSimulado;
     private javax.swing.JTable dtgAvaliacoes;
@@ -1223,9 +1293,9 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
     private javax.swing.JLabel lblLista2;
     private javax.swing.JLabel lblLista3;
     private javax.swing.JLabel lblLista4;
-    private javax.swing.JLabel lblPesoSuportado;
     private javax.swing.JLabel lblPorta;
     private javax.swing.JLabel lblPosicaoAtual;
+    private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblTimer1;
     private javax.swing.JLayeredPane pnlConsulta;
     private javax.swing.JLayeredPane pnlManutencao;
@@ -1238,6 +1308,7 @@ public class Tela_Avaliacoes extends javax.swing.JFrame {
     private javax.swing.JTextField txtId_Prova;
     private static javax.swing.JTextField txtLider_Equipe;
     private static javax.swing.JTextField txtNome_Equipe;
+    private javax.swing.JTextField txtPeso;
     private javax.swing.JTextField txtPesoMaximoSimulado;
     private javax.swing.JTextField txtPeso_Ponte;
     private javax.swing.JTextField txtPorta;

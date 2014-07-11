@@ -345,7 +345,7 @@ public class Tela_Equipes extends javax.swing.JFrame {
         jpManutencao.add(jLabel3);
         jLabel3.setBounds(80, 150, 80, 20);
 
-        jLabel2.setText("Id Cliente");
+        jLabel2.setText("Id Equipe");
         jpManutencao.add(jLabel2);
         jLabel2.setBounds(80, 30, 80, 20);
 
